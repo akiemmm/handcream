@@ -1,0 +1,465 @@
+//色
+$main: #FF9A9A;
+//見出し
+$mainh: #804d4d;
+//強調
+$mains: #BF7474;
+//背景
+$mainback: #FFE6E6;
+
+$sub: #FFAE9A;
+$acc: #C5D28E;
+$acc2: #D3E8E8;
+
+$paleGray: #DCCFCF;
+$gray: #857979;
+$font: #443F3F;
+$fontw: #fff;
+
+$xl: 40px;
+$l: 28px;
+$lm: 24px;
+$m: 20px; //pc時標準
+$ms: 16px; //やや小さめ
+$s: 12px;//小さめ
+//コンテンツ幅
+$contl: 1520px;
+$contm: 1320px;
+$conts: 1120px;
+//font-family
+$yugothic:-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+$meiryo: Verdana,"メイリオ",Meiryo,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+$yumincho:"游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+
+@mixin btnBase($h, $w, $br){
+  height: $h;
+  width: $w;
+  border-radius: $br;
+  display: flex;
+  color: $fontw;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all ease 0.3s;
+}
+//PC最小幅とSP最大幅を変数に入れる
+$media-pc: 768px;
+$media-sp: 767px;
+
+//スタイルだけでなくメディアクエリの処理ごと@includeで渡したいので中身に@contentをつけておく
+@mixin pc {
+  @media only screen and (min-width: $media-pc ) {
+    @content;  
+  }
+}
+@mixin sp {
+  @media only screen and (max-width: $media-sp) {
+    @content;
+  }
+}
+
+
+
+//base
+html{
+  font-size: $m;
+}
+@media screen and (min-width:428px){
+  html{
+    font-size: $ms;
+  } 
+}
+body{
+  line-height: 1.8;
+  font-family: $yugothic;
+}
+//heading
+//p
+//ul,ol
+ul, ol{
+  list-style: none;
+}
+//a
+a{
+    text-decoration: none;
+  &:hover, &:focus{
+    text-decoration: underline;
+  }
+}
+//header
+//footer
+.st{
+  &-header{
+    @mixin pc {
+      display: block;
+    }
+    @mixin sp {
+      display: none;
+    }
+    position: fixed;
+    top: 0;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    &__inner{
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      width: 100%;
+      &Logo{
+        display: block;
+        height: 40px;
+        margin: 0;
+      }
+      &Nav{
+        display: flex;
+        align-items: center;
+        &List{
+          display: flex;
+          &Item{
+            margin-right: 40px;
+            &Link{
+            display: block;
+            font-weight: bold;
+            color: $font;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-footer{
+    font-size: $ms;
+    background: $mainback;
+    &__inner{
+      max-width: $conts;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100px;
+      margin: 0 auto;
+      &Company{
+        font-size: $lm;
+      }
+      &Nav{
+        display: flex;
+        align-items: center;
+        &List{
+          display: flex;
+          &Item{
+            margin-right: 30px; 
+            &Link{
+              color: $font;
+            }
+          }
+        }
+        &SNS{
+          display: flex;
+          align-items: center;
+          &Link{
+            display: block;
+            img{
+              width: 32px;
+              height: 32px;
+            }
+            &:first-child{
+              img{
+              height: 27px;
+              margin-right: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__copyright{
+      background: $gray;
+      color: $fontw;
+      padding: 15px 0;
+      text-align: center;
+    }
+  }
+}
+.st{
+  &-header{
+    @mixin pc {
+      display: none;
+    }
+    @mixin sp {
+      display: block;
+    }
+    position: fixed;
+    top: 0;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    &__inner{
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      width: 100%;
+      &Logo{
+        display: block;
+        height: 40px;
+        margin: 0;
+      }
+      &Nav{
+        display: flex;
+        align-items: center;
+        &List{
+          display: flex;
+          &Item{
+            margin-right: 40px;
+            &Link{
+            display: block;
+            font-weight: bold;
+            color: $font;
+            }
+          }
+        }
+      }
+    }
+
+  }
+  &-footer{
+    font-size: $ms;
+    background: $mainback;
+    &__inner{
+      max-width: $conts;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100px;
+      margin: 0 auto;
+      &Company{
+        font-size: $lm;
+      }
+      &Nav{
+        display: flex;
+        align-items: center;
+        &List{
+          display: flex;
+          &Item{
+            margin-right: 30px; 
+            &Link{
+              color: $font;
+            }
+          }
+        }
+        &SNS{
+          display: flex;
+          align-items: center;
+          &Link{
+            display: block;
+            img{
+              width: 32px;
+              height: 32px;
+            }
+            &:first-child{
+              img{
+              height: 27px;
+              margin-right: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__copyright{
+      background: $gray;
+      color: $fontw;
+      padding: 15px 0;
+      text-align: center;
+    }
+  }
+}
+
+//btnなど
+.sw{
+  &-pageTop{
+    position: relative;
+    background: $main;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: block;
+    color: $fontw;
+    text-decoration: none;
+    /*opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s;*/
+    span{
+      position: absolute;
+      font-size: 0.75rem;
+      line-height: 1.2;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      &::before {
+        content: "";
+        position: absolute;
+        top: -28px;
+        left: -8px;
+        display: block;
+        width: 14px;
+        height: 14px;
+        border-bottom: 4px solid  $fontw;
+        border-left: 4px solid  $fontw;
+      transform: rotate(135deg);
+      }
+    }
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .5s;
+    }
+    &:hover{
+      span::before{
+      top: -38px;
+      transition: all .3s;
+      }
+    }
+  }
+  &-btn{ 
+    @include btnBase(48px, 200px, 24px);
+    & &__inner{
+      display: block;
+      &::before {
+        content: "";
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: inline-block;
+        vertical-align:middle;
+      }
+    }
+    &.buy{
+      background: $main;
+      &:hover{
+        background: $fontw;
+        color: $main;
+        border: 1px solid $main;
+          .sw-btn__inner{
+            display: block;
+            &::before {
+              background-image: url("img/cart_hover.png");
+              }
+            }
+        }
+      .sw-btn__inner{
+        display: block;
+        &::before {
+          content: "";
+          width:32px;
+          height: 26px;
+          margin-right: 0.4em;
+          background-image: url("img/cart.png");
+          }
+        }
+      &.pc{
+        @include btnBase(96px, 400px, 48px);
+        font-size: 32px;
+        .sw-btn__inner{
+          display: block;
+          &::before {
+            content: "";
+            width:64px;
+            height: 52px;
+            }
+          }
+      }  
+
+      }
+      &.shop{
+        background: $sub;
+        &:hover{
+          background: $fontw;
+          color: $sub;
+          border: 1px solid $sub;
+            .sw-btn__inner{
+              display: block;
+              &::before {
+                background-image: url("img/shop_hover.png");
+                }
+              }
+          }
+          .sw-btn__inner{
+            display: block;
+            &::before {
+              content: "";
+              width:32px;
+              height: 26px;
+              margin-right: 0.4em;
+              background-image: url("img/shop.png");
+              }
+            }
+          &.pc{
+            @include btnBase(96px, 400px, 48px);
+            font-size: 32px;
+            .sw-btn__inner{
+              display: block;
+              &::before {
+                content: "";
+                width:64px;
+                height: 52px;
+                }
+              }
+          }  
+        }
+  }
+}
+
+//場所によっては例外もある
+.lp{
+  &-mv{
+    &__inner{
+      &Box{
+        &Head{
+
+        }
+        &Text{
+          font-family: $yumincho;
+          font-weight: 500;
+        }
+          
+      }
+    }
+  }
+
+
+
+  &-shoping{
+    &__inner{
+      font-family: $meiryo;
+      &Head{
+        color: $mainh;
+      }
+    }
+  }
+}
+
+//lp-shopping
+//場所
+//場所によっては例外もある
+.lp{
+  &-mv{
+
+    &__inner{
+      &TextBox{
+        font-family: $yumincho;
+      }
+    }
+  }
+  &-shoping{
+    &__inner{
+      font-family: $meiryo;
+      &Head{
+        color: $mainh;
+      }
+    }
+  }
+}
