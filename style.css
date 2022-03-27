@@ -314,11 +314,11 @@ a:hover, a:focus {
   font-weight: bold;
   text-decoration: none;
   transition: all ease 0.3s;
-  font-size: 32px;
 }
 
 .sw-btn.buy.pc .sw-btn__inner {
   display: block;
+  font-size: 32px;
 }
 
 .sw-btn.buy.pc .sw-btn__inner::before {
@@ -425,7 +425,7 @@ a:hover, a:focus {
 .lp-mv__listItem01 .lp-mv__listItemHandcream {
   position: absolute;
   right: 20.8vw;
-  height: 70vh;
+  height: 70.37037vh;
   top: calc(50% + 60px);
   transform: translateY(-50%);
 }
@@ -505,11 +505,91 @@ a:hover, a:focus {
   font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
   font-weight: bold;
   text-align: center;
+  padding: 80px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.lp-spring__innerHead {
+  font-size: 40px;
+  text-align: center;
+  padding: 40px 50px;
+  position: relative;
+  max-width: 730px;
+  max-height: 316px;
+  margin: 0 auto;
+  z-index: 1;
+  background: radial-gradient(#fff 66%, rgba(255, 255, 255, 0.5) 70%, transparent 76%);
+}
+
+.lp-spring__innerImg--hand {
+  display: block;
+  margin: 0 auto;
+  max-width: 750px;
+  width: 75vw;
+}
+
+.lp-spring__innerImg--sakura01 {
+  max-width: 510px;
+  width: 26.56vw;
+  position: absolute;
+  left: 0;
+  top: 300px;
+}
+
+.lp-spring__innerImg--sakura02 {
+  max-width: 516px;
+  width: 26.875vw;
+  position: absolute;
+  right: 0;
+  top: 300px;
 }
 
 .lp-catch {
   min-height: 100vh;
   background: #FFE6E6;
+  font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+}
+
+.lp-catch__inner {
+  height: 100%;
+  display: flex;
+  min-height: 100vh;
+}
+
+.lp-catch__innerText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: center;
+  width: 50%;
+  padding: 50px 0;
+}
+
+.lp-catch__innerTextBox {
+  max-width: 580px;
+  width: 62.5%;
+}
+
+.lp-catch__innerTextBoxHead {
+  margin-bottom: 40px;
+}
+
+.lp-catch__innerTextBoxText {
+  font-size: 24px;
+}
+
+.lp-catch__innerTextBoxText:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.lp-catch__innerTextBoxTextStrong {
+  font-weight: bold;
+}
+
+.lp-catch__innerImg {
+  background: url(img/lp-catch__innerImg.jpg) no-repeat center/cover;
+  width: 50%;
 }
 
 .lp-sales {
@@ -517,11 +597,45 @@ a:hover, a:focus {
 }
 
 .lp-sales__inner {
-  font-family: Verdana, "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  display: flex;
+  min-height: 100vh;
 }
 
-.lp-sales__innerHead {
+.lp-sales__innerText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  min-height: 100vh;
+}
+
+.lp-sales__innerTextBox {
+  width: 520px;
+}
+
+.lp-sales__innerTextBoxHead {
   color: #804d4d;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+.lp-sales__innerTextBoxText {
+  font-family: Verdana, "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  margin-bottom: 1em;
+}
+
+.lp-sales__innerIbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  min-height: 100vh;
+}
+
+.lp-sales__innerIboxImg {
+  display: block;
+  height: calc((780 / 1080) * 100vh);
 }
 
 .lp-features {
