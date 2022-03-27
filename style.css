@@ -3,7 +3,7 @@ html {
   font-size: 20px;
 }
 
-@media screen and (min-width: 428px) {
+@media screen and (max-width: 428px) {
   html {
     font-size: 16px;
   }
@@ -27,24 +27,33 @@ a:hover, a:focus {
 }
 
 .st-header {
+  display: flex;
+  align-items: center;
   position: fixed;
   top: 0;
   height: 120px;
   background: rgba(255, 255, 255, 0.8);
   width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+  .st-header {
+    display: none;
+  }
 }
 
 .st-header__inner {
-  padding: 20px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
   width: 100%;
 }
 
 .st-header__innerLogo {
-  display: block;
+  display: flex;
+  align-items: center;
   height: 40px;
   margin: 0;
 }
@@ -130,6 +139,11 @@ a:hover, a:focus {
 }
 
 .st-header {
+  z-index: 100;
+}
+
+.st-headerSp {
+  display: none;
   position: fixed;
   top: 0;
   height: 120px;
@@ -137,7 +151,13 @@ a:hover, a:focus {
   width: 100%;
 }
 
-.st-header__inner {
+@media screen and (max-width: 767px) {
+  .st-headerSp {
+    display: block;
+  }
+}
+
+.st-headerSp__inner {
   padding: 20px 40px;
   display: flex;
   align-items: center;
@@ -146,90 +166,37 @@ a:hover, a:focus {
   width: 100%;
 }
 
-.st-header__innerLogo {
+.st-headerSp__innerLogo {
   display: block;
   height: 40px;
   margin: 0;
 }
 
-.st-header__innerNav {
+.st-headerSpMenu {
+  display: none;
+}
+
+.st-headerSpMenuNav {
   display: flex;
   align-items: center;
 }
 
-.st-header__innerNavList {
+.st-headerSpMenuNavList {
   display: flex;
 }
 
-.st-header__innerNavListItem {
+.st-headerSpMenuNavListItem {
   margin-right: 40px;
 }
 
-.st-header__innerNavListItemLink {
+.st-headerSpMenuNavListItemLink {
   display: block;
   font-weight: bold;
   color: #443F3F;
 }
 
-.st-footer {
-  font-size: 16px;
-  background: #FFE6E6;
-}
-
-.st-footer__inner {
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100px;
-  margin: 0 auto;
-}
-
-.st-footer__innerCompany {
-  font-size: 24px;
-}
-
-.st-footer__innerNav {
-  display: flex;
-  align-items: center;
-}
-
-.st-footer__innerNavList {
-  display: flex;
-}
-
-.st-footer__innerNavListItem {
-  margin-right: 30px;
-}
-
-.st-footer__innerNavListItemLink {
-  color: #443F3F;
-}
-
-.st-footer__innerNavSNS {
-  display: flex;
-  align-items: center;
-}
-
-.st-footer__innerNavSNSLink {
+.st-headerSpMenu.active {
   display: block;
-}
-
-.st-footer__innerNavSNSLink img {
-  width: 32px;
-  height: 32px;
-}
-
-.st-footer__innerNavSNSLink:first-child img {
-  height: 27px;
-  margin-right: 30px;
-}
-
-.st-footer__copyright {
-  background: #857979;
-  color: #fff;
-  padding: 15px 0;
-  text-align: center;
 }
 
 .sw-pageTop {
@@ -294,6 +261,8 @@ a:hover, a:focus {
 
 .sw-btn .sw-btn__inner {
   display: block;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .sw-btn .sw-btn__inner::before {
@@ -412,27 +381,160 @@ a:hover, a:focus {
   height: 52px;
 }
 
+.lp-mv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+.lp-mv__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 5;
+}
+
+.lp-mv__innerBox {
+  width: calc(100vw - 20.8vw);
+}
+
+.lp-mv__innerBoxHead {
+  margin-left: -40px;
+}
+
 .lp-mv__innerBoxText {
   font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
-  font-weight: 500;
+  font-weight: bold;
+  text-shadow: 0 0 3px white, 0 0 5px white, 0 0 7px white, 0 0 10px white, 0 0 10px white;
 }
 
-.lp-shoping__inner {
-  font-family: Verdana, "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+.lp-mv__listItem {
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.lp-shoping__innerHead {
-  color: #804d4d;
+.lp-mv__listItem01 {
+  z-index: 2;
 }
 
-.lp-mv__innerTextBox {
+.lp-mv__listItem01 .lp-mv__listItemHandcream {
+  position: absolute;
+  right: 20.8vw;
+  height: 70vh;
+  top: calc(50% + 60px);
+  transform: translateY(-50%);
+}
+
+.lp-mv__listItem02 {
+  z-index: 1;
+}
+
+.lp-mv__listItem02 .lp-mv__listItemHand {
+  position: absolute;
+  right: 12vw;
+  bottom: 0;
+  max-height: 942px;
+  height: calc(100vh - 160px);
+}
+
+.lp-mv__listItem03 {
+  height: 100vh;
+  background: url(img/mv03.jpg) center/cover no-repeat;
+  width: 100%;
+  z-index: 0;
+}
+
+.lp-mv__listItem .lp-mv__listItemSakura01 {
+  width: 313px;
+  position: absolute;
+  left: 20px;
+  top: 140px;
+}
+
+.lp-mv__listItem .lp-mv__listItemSakura02 {
+  width: 260px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.lp-winter {
+  min-height: 100vh;
+  background: url(img/winter.jpg) center/cover no-repeat;
+  color: #fff;
   font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.lp-shoping__inner {
+.lp-winter__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lp-winter__innerBox {
+  max-width: 1520px;
+  width: calc(100vw - 400px);
+}
+
+.lp-winter__innerBoxHead {
+  margin-bottom: 40px;
+}
+
+.lp-winter__innerBoxText {
+  font-size: 28px;
+}
+
+.lp-winter__innerBoxText:first-of-type {
+  margin-bottom: 1em;
+}
+
+.lp-spring {
+  min-height: 100vh;
+  background: #FFf5f5;
+  font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.lp-catch {
+  min-height: 100vh;
+  background: #FFE6E6;
+}
+
+.lp-sales {
+  min-height: 100vh;
+}
+
+.lp-sales__inner {
   font-family: Verdana, "メイリオ", Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
-.lp-shoping__innerHead {
+.lp-sales__innerHead {
   color: #804d4d;
+}
+
+.lp-features {
+  min-height: 100vh;
+  background: #FFE6E6;
+}
+
+.lp-voice {
+  min-height: 100vh;
+  background: #FFf5f5;
+}
+
+.lp-shop {
+  min-height: 100vh;
+  background: #FFE6E6;
 }

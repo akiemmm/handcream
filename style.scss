@@ -6,7 +6,7 @@ $mainh: #804d4d;
 $mains: #BF7474;
 //背景
 $mainback: #FFE6E6;
-
+$mainpaleback: #FFf5f5;
 $sub: #FFAE9A;
 $acc: #C5D28E;
 $acc2: #D3E8E8;
@@ -65,7 +65,7 @@ $media-sp: 767px;
 html{
   font-size: $m;
 }
-@media screen and (min-width:428px){
+@media screen and (max-width:428px){
   html{
     font-size: $ms;
   } 
@@ -91,26 +91,28 @@ a{
 //footer
 .st{
   &-header{
-    @mixin pc {
-      display: block;
-    }
-    @mixin sp {
+    @media screen and (max-width:767px){
       display: none;
     }
+    display: flex;
+    align-items: center;
     position: fixed;
     top: 0;
     height: 120px;
     background: rgba(255, 255, 255, 0.8);
     width: 100%;
+    padding: 20px 40px;
+    box-sizing: border-box;
     &__inner{
-      padding: 20px 40px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-sizing: border-box;
+
       width: 100%;
       &Logo{
-        display: block;
+        display: flex;
+        align-items: center;
         height: 40px;
         margin: 0;
       }
@@ -183,101 +185,60 @@ a{
     }
   }
 }
+
 .st{
   &-header{
-    @mixin pc {
+    z-index: 100;
+    &Sp{
       display: none;
-    }
-    @mixin sp {
-      display: block;
-    }
-    position: fixed;
-    top: 0;
-    height: 120px;
-    background: rgba(255, 255, 255, 0.8);
-    width: 100%;
-    &__inner{
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-sizing: border-box;
-      width: 100%;
-      &Logo{
+      @media screen and (max-width:767px){
         display: block;
-        height: 40px;
-        margin: 0;
       }
-      &Nav{
+      position: fixed;
+      top: 0;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.8);
+      width: 100%;
+      &__inner{
+        padding: 20px 40px;
         display: flex;
         align-items: center;
-        &List{
-          display: flex;
-          &Item{
-            margin-right: 40px;
-            &Link{
-            display: block;
-            font-weight: bold;
-            color: $font;
-            }
-          }
+        justify-content: space-between;
+        box-sizing: border-box;
+        width: 100%;
+        &Logo{
+          display: block;
+          height: 40px;
+          margin: 0;
         }
       }
-    }
-
-  }
-  &-footer{
-    font-size: $ms;
-    background: $mainback;
-    &__inner{
-      max-width: $conts;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100px;
-      margin: 0 auto;
-      &Company{
-        font-size: $lm;
-      }
-      &Nav{
-        display: flex;
-        align-items: center;
-        &List{
-          display: flex;
-          &Item{
-            margin-right: 30px; 
-            &Link{
-              color: $font;
-            }
-          }
-        }
-        &SNS{
-          display: flex;
-          align-items: center;
-          &Link{
-            display: block;
-            img{
-              width: 32px;
-              height: 32px;
-            }
-            &:first-child{
-              img{
-              height: 27px;
-              margin-right: 30px;
-              }
-            }
-          }
-        }
-      }
-    }
-    &__copyright{
-      background: $gray;
-      color: $fontw;
-      padding: 15px 0;
-      text-align: center;
     }
   }
 }
+//あえてSPmenuは分ける
+.st-headerSpMenu{
+  display: none;
+  &Nav{
+    display: flex;
+    align-items: center;
+    &List{
+    display: flex;
+    &Item{
+      margin-right: 40px;
+      &Link{
+      display: block;
+      font-weight: bold;
+      color: $font;
+      }
+    }
+  }
+  }
+  &.active{
+    display: block;
+  }
+ 
+}
+
 
 //btnなど
 .sw{
@@ -329,6 +290,8 @@ a{
     @include btnBase(48px, 200px, 24px);
     & &__inner{
       display: block;
+      font-size: $ms;
+      font-weight: bold;
       &::before {
         content: "";
         background-size: contain;
@@ -416,23 +379,126 @@ a{
 //場所によっては例外もある
 .lp{
   &-mv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;
     &__inner{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 5;
       &Box{
+        width: calc(100vw - 20.8vw);
         &Head{
-
+          margin-left: -40px;
         }
+        
         &Text{
           font-family: $yumincho;
-          font-weight: 500;
+          font-weight: bold;
+          text-shadow: 0 0 3px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,1), 0 0 7px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1);
         }
           
       }
+
+    }
+    &__list{
+      &Item{
+        min-height: 100vh;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        &01{
+          z-index:2;
+          .lp-mv__listItemHandcream{
+            position: absolute;
+            right: 20.8vw;
+            height: 70vh;          
+            top: calc(50% + 60px);
+            transform: translateY(-50%);
+          }
+        }
+        &02{
+          z-index:1;
+          .lp-mv__listItemHand{
+            position: absolute;
+            right: 12vw;
+            bottom: 0;
+            max-height: 942px;
+            height: calc(100vh - 160px);
+          }
+        }
+        &03{
+          height: 100vh;
+          background: url(img/mv03.jpg)  center / cover no-repeat;
+          width: 100%; 
+          z-index:0;
+        }
+        .lp-mv__listItemSakura01{
+          width:313px;
+          position: absolute;
+          left: 20px;
+          top: 140px;
+        }
+        .lp-mv__listItemSakura02{
+          width:260px;
+          position: absolute;
+          right: 20px;
+          bottom: 20px;
+        }
+
+      }
     }
   }
+  &-winter{
+    min-height: 100vh;
+    background: url(img/winter.jpg)  center / cover no-repeat;
+    color: $fontw;
+    font-family: $yumincho;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__inner{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &Box{
+        max-width: $contl;
+        width: calc(100vw - 400px) ;
+        &Head{
+          margin-bottom: 40px;
+        }
+        &Text{
+          font-size: $l;
+          &:first-of-type{
+            margin-bottom: 1em;
+          }
+        }
+      }
+    }
 
 
+  }
+  &-spring{
+    min-height: 100vh;
+    background: $mainpaleback;
+    font-family: $yumincho;
+    font-weight: bold;
+    text-align: center;
+  }
+  &-catch{
+    min-height: 100vh;
+    background: $mainback;
+  }
 
-  &-shoping{
+  &-sales{
+    min-height: 100vh;
     &__inner{
       font-family: $meiryo;
       &Head{
@@ -440,26 +506,16 @@ a{
       }
     }
   }
-}
-
-//lp-shopping
-//場所
-//場所によっては例外もある
-.lp{
-  &-mv{
-
-    &__inner{
-      &TextBox{
-        font-family: $yumincho;
-      }
-    }
+  &-features{
+    min-height: 100vh;
+    background: $mainback;
   }
-  &-shoping{
-    &__inner{
-      font-family: $meiryo;
-      &Head{
-        color: $mainh;
-      }
-    }
+  &-voice{
+    min-height: 100vh;
+    background: $mainpaleback;
+  }
+  &-shop{
+    min-height: 100vh;
+    background: $mainback;
   }
 }
