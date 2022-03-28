@@ -325,7 +325,9 @@ a{
         }
       &.pc{
         @include btnBase(96px, 400px, 48px);
-
+        &:hover{
+          color: $main;
+        }
         .sw-btn__inner{
           display: block;
           font-size: 32px;
@@ -363,7 +365,9 @@ a{
             }
           &.pc{
             @include btnBase(96px, 400px, 48px);
-            
+            &:hover{
+              color: $sub;
+            }
             .sw-btn__inner{
               display: block;
               font-size: 32px;
@@ -440,13 +444,15 @@ a{
           z-index:0;
         }
         .lp-mv__listItemSakura01{
-          width:313px;
+          max-width:313px;
+          width: ((313 / 1920) * 100vw);
           position: absolute;
           left: 20px;
           top: 140px;
         }
         .lp-mv__listItemSakura02{
-          width:260px;
+          max-width:260px;
+          width: ((260 / 1920) * 100vw);
           position: absolute;
           right: 20px;
           bottom: 20px;
@@ -596,6 +602,13 @@ a{
           &Text{
             font-family: $meiryo;
             margin-bottom: 1em;
+            &Through{
+              text-decoration: line-through;
+            }
+            &Bargein{
+              font-weight: bold;
+              color: #c40000;
+            }
           }
 
         }
@@ -638,6 +651,12 @@ a{
         &Box{
           max-width: 560px;
           width: calc((2 / 5)* 100vw);
+          &Head{
+            color: $mainh;
+            font-weight: bold;
+            font-family: $yumincho;
+            font-size: $l;
+          }
           &Img{
             
           }
@@ -701,6 +720,16 @@ a{
         &Box{
           max-width: 600px;
           width: calc((600px / 1920) * 100vw);
+          &Name{
+            font-size: $lm;
+            color: $mainh;
+            font-family: $yumincho;
+            font-weight: bold;
+            margin-bottom: 16px;
+          }
+          &Text{
+            line-height: 1.5;
+          }
         }
       }
     }
@@ -714,13 +743,82 @@ a{
   &-shop{
     min-height: 100vh;
     background: $mainback;
+    font-family: $yumincho;
+    position: relative;
     &__inner{
+      padding: 80px 0;
       &Head{
         &Img{
+          display: block;
+          margin: 0 auto 80px;
+        }
+      }
+      &Flex{
+        display: flex;
+        max-width: $contl;
+        width: calc((1520 / 1920) * 100vw);
+        text-align: center;
+        margin: 0 auto;
+        position: relative;
+        &Store{
+          width:50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           
+          &::after {
+            margin: 0;
+            content: "";
+            width: 2px;
+            height: 100%;
+            background-color: $font;
+            position: absolute;
+            left: 50%;
+            height: calc((700 / 1080) * 100vh);
+            top: 0;
+          }
+          &Text{
+            font-size: $l;
+            margin-bottom: 80px;
+          }
+          .sw-btn.store.pc{
+            margin: 0 auto;
+            font-family: $yugothic;
+          }
+
+        }
+
+        &Online{
+          width:50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          &Text{
+           font-size: $xl;
+            margin-bottom: 80px;
+          }
+          .sw-btn.buy.pc{
+            margin: 0 auto;
+            font-family: $yugothic;
+          }
         }
       }
 
+    }
+    &__Sakura{
+      position: absolute;
+      &01{
+        max-width: 313px;
+        width: ((313 / 1920) * 100vw);
+        left: 20px;
+        top: 140px;
+      }
+      &02{
+        max-width: 260px;
+        width: ((260 / 1920) * 100vw);
+        right: 20px;
+        bottom: 20px;
+      }
     }
   }
 }

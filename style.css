@@ -316,6 +316,10 @@ a:hover, a:focus {
   transition: all ease 0.3s;
 }
 
+.sw-btn.buy.pc:hover {
+  color: #FF9A9A;
+}
+
 .sw-btn.buy.pc .sw-btn__inner {
   display: block;
   font-size: 32px;
@@ -368,6 +372,10 @@ a:hover, a:focus {
   font-weight: bold;
   text-decoration: none;
   transition: all ease 0.3s;
+}
+
+.sw-btn.store.pc:hover {
+  color: #FFAE9A;
 }
 
 .sw-btn.store.pc .sw-btn__inner {
@@ -450,14 +458,16 @@ a:hover, a:focus {
 }
 
 .lp-mv__listItem .lp-mv__listItemSakura01 {
-  width: 313px;
+  max-width: 313px;
+  width: 16.30208vw;
   position: absolute;
   left: 20px;
   top: 140px;
 }
 
 .lp-mv__listItem .lp-mv__listItemSakura02 {
-  width: 260px;
+  max-width: 260px;
+  width: 13.54167vw;
   position: absolute;
   right: 20px;
   bottom: 20px;
@@ -625,6 +635,15 @@ a:hover, a:focus {
   margin-bottom: 1em;
 }
 
+.lp-sales__innerTextBoxTextThrough {
+  text-decoration: line-through;
+}
+
+.lp-sales__innerTextBoxTextBargein {
+  font-weight: bold;
+  color: #c40000;
+}
+
 .lp-sales__innerIbox {
   display: flex;
   justify-content: center;
@@ -662,6 +681,13 @@ a:hover, a:focus {
 .lp-features__innerFlexBox {
   max-width: 560px;
   width: calc((2 / 5)* 100vw);
+}
+
+.lp-features__innerFlexBoxHead {
+  color: #804d4d;
+  font-weight: bold;
+  font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+  font-size: 28px;
 }
 
 .lp-features__innerFlexBox02 {
@@ -722,6 +748,18 @@ a:hover, a:focus {
   width: calc((600px / 1920) * 100vw);
 }
 
+.lp-voice__innerFlexBoxName {
+  font-size: 24px;
+  color: #804d4d;
+  font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.lp-voice__innerFlexBoxText {
+  line-height: 1.5;
+}
+
 .lp-voice__annotation {
   text-align: right;
   font-size: 16px;
@@ -732,4 +770,88 @@ a:hover, a:focus {
 .lp-shop {
   min-height: 100vh;
   background: #FFE6E6;
+  font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+  position: relative;
+}
+
+.lp-shop__inner {
+  padding: 80px 0;
+}
+
+.lp-shop__innerHeadImg {
+  display: block;
+  margin: 0 auto 80px;
+}
+
+.lp-shop__innerFlex {
+  display: flex;
+  max-width: 1520px;
+  width: calc((1520 / 1920) * 100vw);
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+}
+
+.lp-shop__innerFlexStore {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lp-shop__innerFlexStore::after {
+  margin: 0;
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-color: #443F3F;
+  position: absolute;
+  left: 50%;
+  height: calc((700 / 1080) * 100vh);
+  top: 0;
+}
+
+.lp-shop__innerFlexStoreText {
+  font-size: 28px;
+  margin-bottom: 80px;
+}
+
+.lp-shop__innerFlexStore .sw-btn.store.pc {
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+}
+
+.lp-shop__innerFlexOnline {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lp-shop__innerFlexOnlineText {
+  font-size: 40px;
+  margin-bottom: 80px;
+}
+
+.lp-shop__innerFlexOnline .sw-btn.buy.pc {
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+}
+
+.lp-shop__Sakura {
+  position: absolute;
+}
+
+.lp-shop__Sakura01 {
+  max-width: 313px;
+  width: 16.30208vw;
+  left: 20px;
+  top: 140px;
+}
+
+.lp-shop__Sakura02 {
+  max-width: 260px;
+  width: 13.54167vw;
+  right: 20px;
+  bottom: 20px;
 }
