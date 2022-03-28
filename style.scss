@@ -338,7 +338,7 @@ a{
       }  
 
       }
-      &.shop{
+      &.store{
         background: $sub;
         &:hover{
           background: $fontw;
@@ -347,7 +347,7 @@ a{
             .sw-btn__inner{
               display: block;
               &::before {
-                background-image: url("img/shop_hover.png");
+                background-image: url("img/store_hover.png");
                 }
               }
           }
@@ -358,14 +358,15 @@ a{
               width:32px;
               height: 26px;
               margin-right: 0.4em;
-              background-image: url("img/shop.png");
+              background-image: url("img/store.png");
               }
             }
           &.pc{
             @include btnBase(96px, 400px, 48px);
-            font-size: 32px;
+            
             .sw-btn__inner{
               display: block;
+              font-size: 32px;
               &::before {
                 content: "";
                 width:64px;
@@ -577,7 +578,7 @@ a{
     &__inner{
       display: flex;
       
-      min-height: 100vh;;
+      min-height: 100vh;
       &Text{
         display: flex;
         justify-content: center;
@@ -615,23 +616,110 @@ a{
     }
   }
   &-features{
-    min-height: 100vh;
+    min-height: 200vh;
     background: $mainback;
+    padding: 80px 0;
+    box-sizing: border-box;
+    position: relative;
     &__inner{
+      &Head{
+        text-align: center;
+        margin-bottom: 80px;
+        &Img{
+          
+        }
+      }
+      &Flex{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: $contm;
+        margin: 0 auto;
+        &Box{
+          max-width: 560px;
+          width: calc((2 / 5)* 100vw);
+          &Img{
+            
+          }
+          &01{
 
+          } 
+          &02{
+            margin-top: calc((408 / 1920)* 100vw);
+          } 
+          &03{
+            margin-top: -300px;
+          }
+        }
+      }
+      &Img{
+        &Sakura{
+          position: absolute;
+          &01{
+            max-width: 472px;
+            width: calc((472 / 1920) * 100vw); 
+            top: 150px;
+            right: 0;
+          }
+          &02{
+            max-width: 368px;
+            width: calc((368 / 1920) * 100vw); 
+            top: 54%;
+            transform:translateY(-50%);
+            left: 0;
+          }
+          &03{
+            max-width: 578px;
+            width: calc((578 / 1920) * 100vw); 
+            bottom: 0;
+            right: 0;
+            
+          }
+
+        }
+      }
     }
   }
   &-voice{
     min-height: 100vh;
     background: $mainpaleback;
+    padding: 80px;
+    box-sizing: border-box;
     &__inner{
-
+      &Head{
+        text-align: center;
+        margin-bottom: 80px;
+        &Img{
+            
+        }
+      }
+      &Flex{
+        display: flex;
+        max-width: $contm;
+        margin: 0 auto 40px;
+        justify-content: space-between;
+        &Box{
+          max-width: 600px;
+          width: calc((600px / 1920) * 100vw);
+        }
+      }
+    }
+    &__annotation{
+      text-align: right;
+      font-size: $ms;
+      width: 100%;
+      display: inline-block;
     }
   }
   &-shop{
     min-height: 100vh;
     background: $mainback;
     &__inner{
+      &Head{
+        &Img{
+          
+        }
+      }
 
     }
   }
