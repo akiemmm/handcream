@@ -26,6 +26,9 @@ $s: 12px;//小さめ
 $contl: 1520px;
 $contm: 1320px;
 $conts: 1120px;
+
+
+
 //font-family
 $yugothic:-apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
 $meiryo: Verdana,"メイリオ",Meiryo,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック","MS PGothic",sans-serif;
@@ -43,19 +46,24 @@ $yumincho:"游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho
   text-decoration: none;
   transition: all ease 0.3s;
 }
-//PC最小幅とSP最大幅を変数に入れる
-$media-pc: 768px;
-$media-sp: 767px;
+@mixin spPad{
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+//PC最小幅とtb最大幅とsp最大幅を変数に入れる
+$breakpoints: (
+  'sp': 'screen and (max-width: 428px)',
+  'tb': 'screen and (max-width: 767px)',
+  'lt': 'screen and (max-width: 1024px)',
+  'pc': 'screen and (min-width: 1025px)'
+);
+
 
 //スタイルだけでなくメディアクエリの処理ごと@includeで渡したいので中身に@contentをつけておく
-@mixin pc {
-  @media only screen and (min-width: $media-pc ) {
+@mixin media($breakpoint:tb) {
+  @media #{map-get($breakpoints, $breakpoint)}{
     @content;  
-  }
-}
-@mixin sp {
-  @media only screen and (max-width: $media-sp) {
-    @content;
   }
 }
 
@@ -64,12 +72,11 @@ $media-sp: 767px;
 //base
 html{
   font-size: $m;
-}
-@media screen and (max-width:428px){
-  html{
+  @include media(sp){
     font-size: $ms;
-  } 
+  }
 }
+
 body{
   line-height: 1.8;
   font-family: $yugothic;
@@ -87,11 +94,179 @@ a{
     text-decoration: underline;
   }
 }
+//btnなど
+.sw{
+  &-pageTop{
+    position: relative;
+    background: $main;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: block;
+    color: $fontw;
+    text-decoration: none;
+    /*opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s;*/
+    span{
+      position: absolute;
+      font-size: 0.75rem;
+      line-height: 1.2;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      &::before {
+        content: "";
+        position: absolute;
+        top: -28px;
+        left: -8px;
+        display: block;
+        width: 14px;
+        height: 14px;
+        border-bottom: 4px solid  $fontw;
+        border-left: 4px solid  $fontw;
+      transform: rotate(135deg);
+      }
+    }
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .5s;
+    }
+    &:hover{
+      span::before{
+      top: -38px;
+      transition: all .3s;
+      }
+    }
+  }
+  &-btn{ 
+    @include btnBase(48px, 200px, 24px);
+    & &__inner{
+      display: block;
+      font-size: $ms;
+      font-weight: bold;
+      &::before {
+        content: "";
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: inline-block;
+        vertical-align:middle;
+      }
+    }
+    &.buy{
+      background: $main;
+      &:hover{
+        background: $fontw;
+        color: $main;
+        border: 1px solid $main;
+          .sw-btn__inner{
+            display: block;
+            &::before {
+              background-image: url("img/cart_hover.png");
+              }
+            }
+        }
+      .sw-btn__inner{
+        display: block;
+        &::before {
+          content: "";
+          width:32px;
+          height: 26px;
+          margin-right: 0.4em;
+          background-image: url("img/cart.png");
+          }
+        }
+      &.pc{
+        @include btnBase(96px, 400px, 48px);
+        @include media(){
+          @include btnBase(48px, 200px, 24px);
+        }
+        &:hover{
+          color: $main;
+        }
+        .sw-btn__inner{
+          display: block;
+          font-size: 32px;
+          @include media(){
+            font-size: $ms;
+          }
+          &::before {
+            content: "";
+            width:64px;
+            height: 52px;
+            @include media(){
+              width:32px;
+              height: 26px;
+            }
+            }
+          }
+      }  
+
+      }
+      &.store{
+        background: $sub;
+        &:hover{
+          background: $fontw;
+          color: $sub;
+          border: 1px solid $sub;
+            .sw-btn__inner{
+              display: block;
+              &::before {
+                background-image: url("img/store_hover.png");
+                }
+              }
+          }
+          .sw-btn__inner{
+            display: block;
+            &::before {
+              content: "";
+              width:32px;
+              height: 26px;
+              margin-right: 0.4em;
+              background-image: url("img/store.png");
+              }
+            }
+          &.pc{
+            @include btnBase(96px, 400px, 48px);
+            @include media(){
+              @include btnBase(48px, 200px, 24px);
+            }
+            &:hover{
+              color: $sub;
+            }
+            .sw-btn__inner{
+              display: block;
+              font-size: 32px;
+              @include media(){
+                font-size: $ms;
+              }
+              &::before {
+                content: "";
+                width:64px;
+                height: 52px;
+                @include media(){
+                  width:32px;
+                  height: 26px;
+                
+                }
+                }
+              }
+          }  
+        }
+  }
+}
+.nav{
+  &-closebtn{
+
+  }
+}
+
 //header
 //footer
 .st{
   &-header{
-    @media screen and (max-width:767px){
+    @include media() {
       display: none;
     }
     display: flex;
@@ -185,22 +360,23 @@ a{
     }
   }
 }
-
+/*sp*/
 .st{
   &-header{
     z-index: 100;
     &Sp{
       display: none;
-      @media screen and (max-width:767px){
+      @include media()  {
         display: block;
       }
       position: fixed;
       top: 0;
-      height: 120px;
+      height: 64px;
       background: rgba(255, 255, 255, 0.8);
       width: 100%;
+      z-index: 100;
       &__inner{
-        padding: 20px 40px;
+        padding: 8px 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -208,21 +384,40 @@ a{
         width: 100%;
         &Logo{
           display: block;
-          height: 40px;
+          height: 48px;
           margin: 0;
+          &Link{
+            display: block;
+            height: 48px;
+            &Img{
+              display: block;
+              height: 48px;
+              }
+            }
         }
+         
       }
     }
   }
 }
 //あえてSPmenuは分ける
+
 .st-headerSpMenu{
   display: none;
+  @include media() {
+    display: none;
+    &.active{
+      display: block;
+    }
+  }
   &Nav{
     display: flex;
+    flex-direction: column;
     align-items: center;
     &List{
-    display: flex;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     &Item{
       margin-right: 40px;
       &Link{
@@ -233,153 +428,7 @@ a{
     }
   }
   }
-  &.active{
-    display: block;
-  }
- 
-}
 
-
-//btnなど
-.sw{
-  &-pageTop{
-    position: relative;
-    background: $main;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    display: block;
-    color: $fontw;
-    text-decoration: none;
-    /*opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s;*/
-    span{
-      position: absolute;
-      font-size: 0.75rem;
-      line-height: 1.2;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      &::before {
-        content: "";
-        position: absolute;
-        top: -28px;
-        left: -8px;
-        display: block;
-        width: 14px;
-        height: 14px;
-        border-bottom: 4px solid  $fontw;
-        border-left: 4px solid  $fontw;
-      transform: rotate(135deg);
-      }
-    }
-    &.active {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity .5s;
-    }
-    &:hover{
-      span::before{
-      top: -38px;
-      transition: all .3s;
-      }
-    }
-  }
-  &-btn{ 
-    @include btnBase(48px, 200px, 24px);
-    & &__inner{
-      display: block;
-      font-size: $ms;
-      font-weight: bold;
-      &::before {
-        content: "";
-        background-size: contain;
-        background-repeat: no-repeat;
-        display: inline-block;
-        vertical-align:middle;
-      }
-    }
-    &.buy{
-      background: $main;
-      &:hover{
-        background: $fontw;
-        color: $main;
-        border: 1px solid $main;
-          .sw-btn__inner{
-            display: block;
-            &::before {
-              background-image: url("img/cart_hover.png");
-              }
-            }
-        }
-      .sw-btn__inner{
-        display: block;
-        &::before {
-          content: "";
-          width:32px;
-          height: 26px;
-          margin-right: 0.4em;
-          background-image: url("img/cart.png");
-          }
-        }
-      &.pc{
-        @include btnBase(96px, 400px, 48px);
-        &:hover{
-          color: $main;
-        }
-        .sw-btn__inner{
-          display: block;
-          font-size: 32px;
-          &::before {
-            content: "";
-            width:64px;
-            height: 52px;
-            }
-          }
-      }  
-
-      }
-      &.store{
-        background: $sub;
-        &:hover{
-          background: $fontw;
-          color: $sub;
-          border: 1px solid $sub;
-            .sw-btn__inner{
-              display: block;
-              &::before {
-                background-image: url("img/store_hover.png");
-                }
-              }
-          }
-          .sw-btn__inner{
-            display: block;
-            &::before {
-              content: "";
-              width:32px;
-              height: 26px;
-              margin-right: 0.4em;
-              background-image: url("img/store.png");
-              }
-            }
-          &.pc{
-            @include btnBase(96px, 400px, 48px);
-            &:hover{
-              color: $sub;
-            }
-            .sw-btn__inner{
-              display: block;
-              font-size: 32px;
-              &::before {
-                content: "";
-                width:64px;
-                height: 52px;
-                }
-              }
-          }  
-        }
-  }
 }
 
 //場所によっては例外もある
@@ -390,15 +439,27 @@ a{
     align-items: center;
     position: relative;
     min-height: 100vh;
+    @include media(){
+      align-items: flex-start;
+      @include spPad();
+    }
     &__inner{
       display: flex;
       flex-direction: column;
       justify-content: center;
       z-index: 5;
+      @include media(){
+        justify-content: flex-start;
+        margin-top: 100px;
+      }
       &Box{
         width: calc(100vw - 20.8vw);
         &Head{
           margin-left: -40px;
+          @include media(){
+            margin-left: -30px;
+          width: calc((350 / 375) * 100vw);
+          }
         }
         
         &Text{
@@ -407,6 +468,30 @@ a{
           text-shadow: 0 0 3px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,1), 0 0 7px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1);
         }
           
+      }
+      &Button{
+        color: $main;
+        background: transparent;
+        cursor: pointer;
+        font-size: 12px;
+        padding-bottom: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+       width: 64px;
+        &Bar{
+          color: $main;
+          display: block;
+          height: 8px;
+          margin: 0 0 0 10%;
+          position: absolute;
+          top: 40%;
+          left: 45%;
+          width: 40px;
+        }
       }
 
     }
@@ -425,7 +510,16 @@ a{
             height: ((760 / 1080) * 100vh);          
             top: calc(50% + 60px);
             transform: translateY(-50%);
+            @include media(){
+              top: auto;
+              transform: translateY(0);
+              bottom: 40px;
+              height: ((315 / 667) * 100vh);
+              right: ( (20 / 375) *100vw );
+              margin-bottom: 20px;
+            }
           }
+
         }
         &02{
           z-index:1;
@@ -434,8 +528,13 @@ a{
             right: 12vw;
             bottom: 0;
             max-height: 942px;
-            height: calc(100vh - 160px);
           }
+          @include media(){
+            height: ((315 / 667) * 100vh);
+            right: ( (20 / 375) *100vw );
+
+          }
+
         }
         &03{
           height: 100vh;
@@ -449,6 +548,9 @@ a{
           position: absolute;
           left: 20px;
           top: 140px;
+          @include media(){
+            display: none;
+          }
         }
         .lp-mv__listItemSakura02{
           max-width:260px;
@@ -456,6 +558,11 @@ a{
           position: absolute;
           right: 20px;
           bottom: 20px;
+          @include media(){
+            right: auto;
+            left: calc((30 /667) * 100vw);
+            bottom: 40px;
+          }
         }
 
       }
@@ -471,6 +578,9 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @include media(){
+      @include spPad();
+    }
     &__inner{
       display: flex;
       flex-direction: column;
@@ -479,11 +589,32 @@ a{
       &Box{
         max-width: $contl;
         width: calc(100vw - 400px) ;
+        @include media(){
+          width: 100%;
+        }
         &Head{
           margin-bottom: 40px;
+          &Img{
+            display: block;
+            @include media(){
+              display: none;
+            }
+            &Tb{
+              display: none;
+              @include media(){
+                display: block;
+                margin: 0 auto;
+              }
+          }
+
+          }
         }
         &Text{
           font-size: $l;
+          @include media(){
+            font-size: $lm;
+            text-align: center;
+          }
           &:first-of-type{
             margin-bottom: 1em;
           }
@@ -499,9 +630,12 @@ a{
     font-family: $yumincho;
     font-weight: bold;
     text-align: center;
-    padding: 80px;
+    padding: 80px 0;
     box-sizing: border-box;
-    position: relative;  
+    position: relative; 
+    @include media(){
+      @include spPad();
+    }
     &__inner{
       &Head{
         font-size: $xl;
@@ -513,6 +647,10 @@ a{
         margin: 0 auto;
         z-index:1;
         background: radial-gradient(#fff 66%, rgba(255,255,255,0.5) 70%,transparent 76%);
+        @include media(){
+          font-size: $lm;
+          max-width: 440px;
+        }
       }
       &Img{
         &--hand{
@@ -527,6 +665,9 @@ a{
           position: absolute;
           left: 0;
           top: 300px;
+          @include media(lt){
+            display: none;
+          }
         }
         &--sakura02{
           max-width: 516px;
@@ -534,6 +675,9 @@ a{
           position: absolute;
           right: 0;
           top: 300px;
+          @include media(lt){
+            display: none;
+          }
         }
       }
     }
@@ -550,17 +694,45 @@ a{
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: center;
         width: 50%;
-        padding: 50px 0;
+        padding: 80px 0;
+        box-sizing: border-box;
+        @include media(lt){
+          width: 100%;
+          @include spPad();
+        }
+        @include media(sp){
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
         &Box{
           max-width: 580px;
           width: 62.5%;
+          @include media(lt){
+            width: 100%;
+          }
           &Head{
             margin-bottom: 40px;
+            &Img{
+              @include media(){
+                display: none;
+              }
+              &Tb{
+                display: none;
+                @include media(){
+                  display: block;
+                }  
+              }
+            }
           }
           &Text{
             font-size: $lm;
+            @include media(){
+              font-size: $m;
+            }
+            @include media(sp){
+              font-size: $ms;
+            }
             &:not(:last-child){
               margin-bottom: 1em;
             }
@@ -575,24 +747,50 @@ a{
       &Img{
         background: url(img/lp-catch__innerImg.jpg) no-repeat center / cover;
         width: 50%;
+        @include media(lt){
+          display: none;
+        }
       }
 
     }
   }
   &-sales{
     min-height: 100vh;
+    box-sizing: border-box;
+    @include spPad();
+    @include media(lt){
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+    @include media(sp){
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
     &__inner{
       display: flex;
-      
       min-height: 100vh;
+      @include media(lt){
+        min-height: auto;
+        flex-direction: column-reverse;
+      }
       &Text{
         display: flex;
         justify-content: center;
         align-items: center;
         width: 50%;
         min-height: 100vh;
+        @include media(lt){
+          min-height: auto;
+          width: 100%;
+        }
         &Box{
           width: 520px;
+          @include media(lt){
+            width:80%;
+          }
+          @include media(){
+            width:100%;
+          }
           &Head{
             color: $mainh;
             font-weight: bold;
@@ -620,10 +818,17 @@ a{
         align-items: center;
         width: 50%;
         min-height: 100vh;
+        @include media(lt){
+          min-height: auto;
+          width: 100%;
+        }
         &Img{
           display: block;
           height: calc((780 / 1080) * 100vh);
-
+          @include media(lt){
+            height: calc((272 / 667) * 100vh);
+            margin-bottom: 40px;
+          }
         }
       }
     }
@@ -634,12 +839,26 @@ a{
     padding: 80px 0;
     box-sizing: border-box;
     position: relative;
+    @include spPad();
     &__inner{
       &Head{
         text-align: center;
         margin-bottom: 80px;
         &Img{
-          
+          display: block;
+          margin: 0 auto;
+
+          @include media(){
+            display: none;
+          }
+          &Tb{
+            display: none;
+            @include media(){
+              display: block;
+              margin: 0 auto;
+            }  
+
+          }
         }
       }
       &Flex{
@@ -648,9 +867,16 @@ a{
         justify-content: space-between;
         max-width: $contm;
         margin: 0 auto;
+        @include media(){
+          flex-direction: column;
+          padding: 40px 0;
+        }
         &Box{
           max-width: 560px;
           width: calc((2 / 5)* 100vw);
+          @include media(){
+            width: 100%;
+          }
           &Head{
             color: $mainh;
             font-weight: bold;
@@ -667,12 +893,15 @@ a{
             margin-top: calc((408 / 1920)* 100vw);
           } 
           &03{
-            margin-top: -300px;
+            margin-top: -200px;
           }
         }
       }
       &Img{
         &Sakura{
+          @include media(lt){
+            display: none;
+          }
           position: absolute;
           &01{
             max-width: 472px;
@@ -683,7 +912,7 @@ a{
           &02{
             max-width: 368px;
             width: calc((368 / 1920) * 100vw); 
-            top: 54%;
+            top: 53%;
             transform:translateY(-50%);
             left: 0;
           }

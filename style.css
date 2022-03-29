@@ -26,179 +26,6 @@ a:hover, a:focus {
   text-decoration: underline;
 }
 
-.st-header {
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.8);
-  width: 100%;
-  padding: 20px 40px;
-  box-sizing: border-box;
-}
-
-@media screen and (max-width: 767px) {
-  .st-header {
-    display: none;
-  }
-}
-
-.st-header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.st-header__innerLogo {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  margin: 0;
-}
-
-.st-header__innerNav {
-  display: flex;
-  align-items: center;
-}
-
-.st-header__innerNavList {
-  display: flex;
-}
-
-.st-header__innerNavListItem {
-  margin-right: 40px;
-}
-
-.st-header__innerNavListItemLink {
-  display: block;
-  font-weight: bold;
-  color: #443F3F;
-}
-
-.st-footer {
-  font-size: 16px;
-  background: #FFE6E6;
-}
-
-.st-footer__inner {
-  max-width: 1120px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100px;
-  margin: 0 auto;
-}
-
-.st-footer__innerCompany {
-  font-size: 24px;
-}
-
-.st-footer__innerNav {
-  display: flex;
-  align-items: center;
-}
-
-.st-footer__innerNavList {
-  display: flex;
-}
-
-.st-footer__innerNavListItem {
-  margin-right: 30px;
-}
-
-.st-footer__innerNavListItemLink {
-  color: #443F3F;
-}
-
-.st-footer__innerNavSNS {
-  display: flex;
-  align-items: center;
-}
-
-.st-footer__innerNavSNSLink {
-  display: block;
-}
-
-.st-footer__innerNavSNSLink img {
-  width: 32px;
-  height: 32px;
-}
-
-.st-footer__innerNavSNSLink:first-child img {
-  height: 27px;
-  margin-right: 30px;
-}
-
-.st-footer__copyright {
-  background: #857979;
-  color: #fff;
-  padding: 15px 0;
-  text-align: center;
-}
-
-.st-header {
-  z-index: 100;
-}
-
-.st-headerSp {
-  display: none;
-  position: fixed;
-  top: 0;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.8);
-  width: 100%;
-}
-
-@media screen and (max-width: 767px) {
-  .st-headerSp {
-    display: block;
-  }
-}
-
-.st-headerSp__inner {
-  padding: 20px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.st-headerSp__innerLogo {
-  display: block;
-  height: 40px;
-  margin: 0;
-}
-
-.st-headerSpMenu {
-  display: none;
-}
-
-.st-headerSpMenuNav {
-  display: flex;
-  align-items: center;
-}
-
-.st-headerSpMenuNavList {
-  display: flex;
-}
-
-.st-headerSpMenuNavListItem {
-  margin-right: 40px;
-}
-
-.st-headerSpMenuNavListItemLink {
-  display: block;
-  font-weight: bold;
-  color: #443F3F;
-}
-
-.st-headerSpMenu.active {
-  display: block;
-}
-
 .sw-pageTop {
   position: relative;
   background: #FF9A9A;
@@ -316,6 +143,21 @@ a:hover, a:focus {
   transition: all ease 0.3s;
 }
 
+@media screen and (max-width: 767px) {
+  .sw-btn.buy.pc {
+    height: 48px;
+    width: 200px;
+    border-radius: 24px;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all ease 0.3s;
+  }
+}
+
 .sw-btn.buy.pc:hover {
   color: #FF9A9A;
 }
@@ -325,10 +167,23 @@ a:hover, a:focus {
   font-size: 32px;
 }
 
+@media screen and (max-width: 767px) {
+  .sw-btn.buy.pc .sw-btn__inner {
+    font-size: 16px;
+  }
+}
+
 .sw-btn.buy.pc .sw-btn__inner::before {
   content: "";
   width: 64px;
   height: 52px;
+}
+
+@media screen and (max-width: 767px) {
+  .sw-btn.buy.pc .sw-btn__inner::before {
+    width: 32px;
+    height: 26px;
+  }
 }
 
 .sw-btn.store {
@@ -374,6 +229,21 @@ a:hover, a:focus {
   transition: all ease 0.3s;
 }
 
+@media screen and (max-width: 767px) {
+  .sw-btn.store.pc {
+    height: 48px;
+    width: 200px;
+    border-radius: 24px;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all ease 0.3s;
+  }
+}
+
 .sw-btn.store.pc:hover {
   color: #FFAE9A;
 }
@@ -383,10 +253,216 @@ a:hover, a:focus {
   font-size: 32px;
 }
 
+@media screen and (max-width: 767px) {
+  .sw-btn.store.pc .sw-btn__inner {
+    font-size: 16px;
+  }
+}
+
 .sw-btn.store.pc .sw-btn__inner::before {
   content: "";
   width: 64px;
   height: 52px;
+}
+
+@media screen and (max-width: 767px) {
+  .sw-btn.store.pc .sw-btn__inner::before {
+    width: 32px;
+    height: 26px;
+  }
+}
+
+.st-header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+  .st-header {
+    display: none;
+  }
+}
+
+.st-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.st-header__innerLogo {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin: 0;
+}
+
+.st-header__innerNav {
+  display: flex;
+  align-items: center;
+}
+
+.st-header__innerNavList {
+  display: flex;
+}
+
+.st-header__innerNavListItem {
+  margin-right: 40px;
+}
+
+.st-header__innerNavListItemLink {
+  display: block;
+  font-weight: bold;
+  color: #443F3F;
+}
+
+.st-footer {
+  font-size: 16px;
+  background: #FFE6E6;
+}
+
+.st-footer__inner {
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.st-footer__innerCompany {
+  font-size: 24px;
+}
+
+.st-footer__innerNav {
+  display: flex;
+  align-items: center;
+}
+
+.st-footer__innerNavList {
+  display: flex;
+}
+
+.st-footer__innerNavListItem {
+  margin-right: 30px;
+}
+
+.st-footer__innerNavListItemLink {
+  color: #443F3F;
+}
+
+.st-footer__innerNavSNS {
+  display: flex;
+  align-items: center;
+}
+
+.st-footer__innerNavSNSLink {
+  display: block;
+}
+
+.st-footer__innerNavSNSLink img {
+  width: 32px;
+  height: 32px;
+}
+
+.st-footer__innerNavSNSLink:first-child img {
+  height: 27px;
+  margin-right: 30px;
+}
+
+.st-footer__copyright {
+  background: #857979;
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+}
+
+/*sp*/
+.st-header {
+  z-index: 100;
+}
+
+.st-headerSp {
+  display: none;
+  position: fixed;
+  top: 0;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  z-index: 100;
+}
+
+@media screen and (max-width: 767px) {
+  .st-headerSp {
+    display: block;
+  }
+}
+
+.st-headerSp__inner {
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.st-headerSp__innerLogo {
+  display: block;
+  height: 48px;
+  margin: 0;
+}
+
+.st-headerSp__innerLogoLink {
+  display: block;
+  height: 48px;
+}
+
+.st-headerSp__innerLogoLinkImg {
+  display: block;
+  height: 48px;
+}
+
+.st-headerSpMenu {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .st-headerSpMenu {
+    display: none;
+  }
+  .st-headerSpMenu.active {
+    display: block;
+  }
+}
+
+.st-headerSpMenuNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.st-headerSpMenuNavList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.st-headerSpMenuNavListItem {
+  margin-right: 40px;
+}
+
+.st-headerSpMenuNavListItemLink {
+  display: block;
+  font-weight: bold;
+  color: #443F3F;
 }
 
 .lp-mv {
@@ -397,11 +473,27 @@ a:hover, a:focus {
   min-height: 100vh;
 }
 
+@media screen and (max-width: 767px) {
+  .lp-mv {
+    align-items: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+}
+
 .lp-mv__inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 5;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-mv__inner {
+    justify-content: flex-start;
+    margin-top: 100px;
+  }
 }
 
 .lp-mv__innerBox {
@@ -412,10 +504,43 @@ a:hover, a:focus {
   margin-left: -40px;
 }
 
+@media screen and (max-width: 767px) {
+  .lp-mv__innerBoxHead {
+    margin-left: -30px;
+    width: calc((350 / 375) * 100vw);
+  }
+}
+
 .lp-mv__innerBoxText {
   font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
   font-weight: bold;
   text-shadow: 0 0 3px white, 0 0 5px white, 0 0 7px white, 0 0 10px white, 0 0 10px white;
+}
+
+.lp-mv__innerButton {
+  color: #FF9A9A;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  padding-bottom: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 64px;
+}
+
+.lp-mv__innerButtonBar {
+  color: #FF9A9A;
+  display: block;
+  height: 8px;
+  margin: 0 0 0 10%;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  width: 40px;
 }
 
 .lp-mv__listItem {
@@ -438,6 +563,17 @@ a:hover, a:focus {
   transform: translateY(-50%);
 }
 
+@media screen and (max-width: 767px) {
+  .lp-mv__listItem01 .lp-mv__listItemHandcream {
+    top: auto;
+    transform: translateY(0);
+    bottom: 40px;
+    height: 47.22639vh;
+    right: 5.33333vw;
+    margin-bottom: 20px;
+  }
+}
+
 .lp-mv__listItem02 {
   z-index: 1;
 }
@@ -447,7 +583,13 @@ a:hover, a:focus {
   right: 12vw;
   bottom: 0;
   max-height: 942px;
-  height: calc(100vh - 160px);
+}
+
+@media screen and (max-width: 767px) {
+  .lp-mv__listItem02 {
+    height: 47.22639vh;
+    right: 5.33333vw;
+  }
 }
 
 .lp-mv__listItem03 {
@@ -465,12 +607,26 @@ a:hover, a:focus {
   top: 140px;
 }
 
+@media screen and (max-width: 767px) {
+  .lp-mv__listItem .lp-mv__listItemSakura01 {
+    display: none;
+  }
+}
+
 .lp-mv__listItem .lp-mv__listItemSakura02 {
   max-width: 260px;
   width: 13.54167vw;
   position: absolute;
   right: 20px;
   bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-mv__listItem .lp-mv__listItemSakura02 {
+    right: auto;
+    left: calc((30 /667) * 100vw);
+    bottom: 40px;
+  }
 }
 
 .lp-winter {
@@ -485,6 +641,14 @@ a:hover, a:focus {
   align-items: center;
 }
 
+@media screen and (max-width: 767px) {
+  .lp-winter {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+}
+
 .lp-winter__inner {
   display: flex;
   flex-direction: column;
@@ -497,12 +661,46 @@ a:hover, a:focus {
   width: calc(100vw - 400px);
 }
 
+@media screen and (max-width: 767px) {
+  .lp-winter__innerBox {
+    width: 100%;
+  }
+}
+
 .lp-winter__innerBoxHead {
   margin-bottom: 40px;
 }
 
+.lp-winter__innerBoxHeadImg {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-winter__innerBoxHeadImg {
+    display: none;
+  }
+}
+
+.lp-winter__innerBoxHeadImgTb {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-winter__innerBoxHeadImgTb {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 .lp-winter__innerBoxText {
   font-size: 28px;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-winter__innerBoxText {
+    font-size: 24px;
+    text-align: center;
+  }
 }
 
 .lp-winter__innerBoxText:first-of-type {
@@ -515,9 +713,17 @@ a:hover, a:focus {
   font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
   font-weight: bold;
   text-align: center;
-  padding: 80px;
+  padding: 80px 0;
   box-sizing: border-box;
   position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-spring {
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
 }
 
 .lp-spring__innerHead {
@@ -530,6 +736,13 @@ a:hover, a:focus {
   margin: 0 auto;
   z-index: 1;
   background: radial-gradient(#fff 66%, rgba(255, 255, 255, 0.5) 70%, transparent 76%);
+}
+
+@media screen and (max-width: 767px) {
+  .lp-spring__innerHead {
+    font-size: 24px;
+    max-width: 440px;
+  }
 }
 
 .lp-spring__innerImg--hand {
@@ -547,12 +760,24 @@ a:hover, a:focus {
   top: 300px;
 }
 
+@media screen and (max-width: 1024px) {
+  .lp-spring__innerImg--sakura01 {
+    display: none;
+  }
+}
+
 .lp-spring__innerImg--sakura02 {
   max-width: 516px;
   width: 26.875vw;
   position: absolute;
   right: 0;
   top: 300px;
+}
+
+@media screen and (max-width: 1024px) {
+  .lp-spring__innerImg--sakura02 {
+    display: none;
+  }
 }
 
 .lp-catch {
@@ -571,9 +796,25 @@ a:hover, a:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: center;
   width: 50%;
-  padding: 50px 0;
+  padding: 80px 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .lp-catch__innerText {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .lp-catch__innerText {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 .lp-catch__innerTextBox {
@@ -581,12 +822,46 @@ a:hover, a:focus {
   width: 62.5%;
 }
 
+@media screen and (max-width: 1024px) {
+  .lp-catch__innerTextBox {
+    width: 100%;
+  }
+}
+
 .lp-catch__innerTextBoxHead {
   margin-bottom: 40px;
 }
 
+@media screen and (max-width: 767px) {
+  .lp-catch__innerTextBoxHeadImg {
+    display: none;
+  }
+}
+
+.lp-catch__innerTextBoxHeadImgTb {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-catch__innerTextBoxHeadImgTb {
+    display: block;
+  }
+}
+
 .lp-catch__innerTextBoxText {
   font-size: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-catch__innerTextBoxText {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .lp-catch__innerTextBoxText {
+    font-size: 16px;
+  }
 }
 
 .lp-catch__innerTextBoxText:not(:last-child) {
@@ -602,13 +877,44 @@ a:hover, a:focus {
   width: 50%;
 }
 
+@media screen and (max-width: 1024px) {
+  .lp-catch__innerImg {
+    display: none;
+  }
+}
+
 .lp-sales {
   min-height: 100vh;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .lp-sales {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .lp-sales {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 .lp-sales__inner {
   display: flex;
   min-height: 100vh;
+}
+
+@media screen and (max-width: 1024px) {
+  .lp-sales__inner {
+    min-height: auto;
+    flex-direction: column-reverse;
+  }
 }
 
 .lp-sales__innerText {
@@ -619,8 +925,27 @@ a:hover, a:focus {
   min-height: 100vh;
 }
 
+@media screen and (max-width: 1024px) {
+  .lp-sales__innerText {
+    min-height: auto;
+    width: 100%;
+  }
+}
+
 .lp-sales__innerTextBox {
   width: 520px;
+}
+
+@media screen and (max-width: 1024px) {
+  .lp-sales__innerTextBox {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .lp-sales__innerTextBox {
+    width: 100%;
+  }
 }
 
 .lp-sales__innerTextBoxHead {
@@ -652,9 +977,23 @@ a:hover, a:focus {
   min-height: 100vh;
 }
 
+@media screen and (max-width: 1024px) {
+  .lp-sales__innerIbox {
+    min-height: auto;
+    width: 100%;
+  }
+}
+
 .lp-sales__innerIboxImg {
   display: block;
   height: calc((780 / 1080) * 100vh);
+}
+
+@media screen and (max-width: 1024px) {
+  .lp-sales__innerIboxImg {
+    height: calc((272 / 667) * 100vh);
+    margin-bottom: 40px;
+  }
 }
 
 .lp-features {
@@ -663,11 +1002,36 @@ a:hover, a:focus {
   padding: 80px 0;
   box-sizing: border-box;
   position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
 }
 
 .lp-features__innerHead {
   text-align: center;
   margin-bottom: 80px;
+}
+
+.lp-features__innerHeadImg {
+  display: block;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-features__innerHeadImg {
+    display: none;
+  }
+}
+
+.lp-features__innerHeadImgTb {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-features__innerHeadImgTb {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .lp-features__innerFlex {
@@ -678,9 +1042,22 @@ a:hover, a:focus {
   margin: 0 auto;
 }
 
+@media screen and (max-width: 767px) {
+  .lp-features__innerFlex {
+    flex-direction: column;
+    padding: 40px 0;
+  }
+}
+
 .lp-features__innerFlexBox {
   max-width: 560px;
   width: calc((2 / 5)* 100vw);
+}
+
+@media screen and (max-width: 767px) {
+  .lp-features__innerFlexBox {
+    width: 100%;
+  }
 }
 
 .lp-features__innerFlexBoxHead {
@@ -695,11 +1072,17 @@ a:hover, a:focus {
 }
 
 .lp-features__innerFlexBox03 {
-  margin-top: -300px;
+  margin-top: -200px;
 }
 
 .lp-features__innerImgSakura {
   position: absolute;
+}
+
+@media screen and (max-width: 1024px) {
+  .lp-features__innerImgSakura {
+    display: none;
+  }
 }
 
 .lp-features__innerImgSakura01 {
@@ -712,7 +1095,7 @@ a:hover, a:focus {
 .lp-features__innerImgSakura02 {
   max-width: 368px;
   width: calc((368 / 1920) * 100vw);
-  top: 54%;
+  top: 53%;
   transform: translateY(-50%);
   left: 0;
 }
