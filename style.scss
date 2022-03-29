@@ -844,6 +844,9 @@ a{
       &Head{
         text-align: center;
         margin-bottom: 80px;
+        @include media(){
+          margin-bottom: 40px;
+        }
         &Img{
           display: block;
           margin: 0 auto;
@@ -876,6 +879,7 @@ a{
           width: calc((2 / 5)* 100vw);
           @include media(){
             width: 100%;
+            margin: 0 auto;
           }
           &Head{
             color: $mainh;
@@ -891,9 +895,15 @@ a{
           } 
           &02{
             margin-top: calc((408 / 1920)* 100vw);
+            @include media(){
+              margin-top: 40px;
+            }
           } 
           &03{
             margin-top: -200px;
+            @include media(){
+              margin-top: 40px;
+            }
           }
         }
       }
@@ -931,13 +941,29 @@ a{
   &-voice{
     min-height: 100vh;
     background: $mainpaleback;
-    padding: 80px;
+    padding: 80px 80px;
     box-sizing: border-box;
+    @include media (lt){
+      padding: 80px 40px;
+    }
+    @include media (){
+      padding-top: 40px;
+      padding-bottom: 40px;
+      @include spPad();
+    }
     &__inner{
       &Head{
         text-align: center;
         margin-bottom: 80px;
-        &Img{
+        @include media (){
+          margin-bottom: 40px;
+        }
+        &Img{//一時しのぎ
+          display: block;
+          margin: 0 auto;
+          @include media (){
+              width: 33vw;
+          }
             
         }
       }
@@ -946,9 +972,23 @@ a{
         max-width: $contm;
         margin: 0 auto 40px;
         justify-content: space-between;
+        @include media (){
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+        }
         &Box{
           max-width: 600px;
-          width: calc((600px / 1920) * 100vw);
+          width: calc((720 / 1920) * 100vw);
+          @include media (){
+            width: calc((600 / 767) * 100vw);
+            &:first-child{
+              margin-bottom: 40px;
+            }
+          }
+          @include media (sp){
+            width: 100%;
+          }
           &Name{
             font-size: $lm;
             color: $mainh;

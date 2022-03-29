@@ -1012,6 +1012,12 @@ a:hover, a:focus {
   margin-bottom: 80px;
 }
 
+@media screen and (max-width: 767px) {
+  .lp-features__innerHead {
+    margin-bottom: 40px;
+  }
+}
+
 .lp-features__innerHeadImg {
   display: block;
   margin: 0 auto;
@@ -1057,6 +1063,7 @@ a:hover, a:focus {
 @media screen and (max-width: 767px) {
   .lp-features__innerFlexBox {
     width: 100%;
+    margin: 0 auto;
   }
 }
 
@@ -1071,8 +1078,20 @@ a:hover, a:focus {
   margin-top: calc((408 / 1920)* 100vw);
 }
 
+@media screen and (max-width: 767px) {
+  .lp-features__innerFlexBox02 {
+    margin-top: 40px;
+  }
+}
+
 .lp-features__innerFlexBox03 {
   margin-top: -200px;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-features__innerFlexBox03 {
+    margin-top: 40px;
+  }
 }
 
 .lp-features__innerImgSakura {
@@ -1110,13 +1129,46 @@ a:hover, a:focus {
 .lp-voice {
   min-height: 100vh;
   background: #FFf5f5;
-  padding: 80px;
+  padding: 80px 80px;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .lp-voice {
+    padding: 80px 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .lp-voice {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
 }
 
 .lp-voice__innerHead {
   text-align: center;
   margin-bottom: 80px;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-voice__innerHead {
+    margin-bottom: 40px;
+  }
+}
+
+.lp-voice__innerHeadImg {
+  display: block;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+  .lp-voice__innerHeadImg {
+    width: 33vw;
+  }
 }
 
 .lp-voice__innerFlex {
@@ -1126,9 +1178,32 @@ a:hover, a:focus {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 767px) {
+  .lp-voice__innerFlex {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
 .lp-voice__innerFlexBox {
   max-width: 600px;
-  width: calc((600px / 1920) * 100vw);
+  width: calc((720 / 1920) * 100vw);
+}
+
+@media screen and (max-width: 767px) {
+  .lp-voice__innerFlexBox {
+    width: calc((600 / 767) * 100vw);
+  }
+  .lp-voice__innerFlexBox:first-child {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .lp-voice__innerFlexBox {
+    width: 100%;
+  }
 }
 
 .lp-voice__innerFlexBoxName {
