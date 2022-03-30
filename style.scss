@@ -478,28 +478,39 @@ a{
 //あえてSPmenuは分ける
 
 .st-headerSpMenu{
-  display: none;
+  opacity: 0;
+  background: $mainback;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  min-height: 100vh;
+  width: 100vw;
   @include media() {
     display: none;
     &.is-active{
+      animation: hamburger-open .5s ease;
       display: block;
+      opacity: 1;
+
     }
-  }
-  &Nav{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    &List{
+  }    
+    &Nav{
+      padding-top: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
-    &Item{
-      margin-right: 40px;
-      &Link{
-      display: block;
-      font-weight: bold;
-      color: $font;
-      }
+      &List{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      &Item{
+        &Link{
+        display: block;
+        font-weight: bold;
+        color: $font;
+        }
+
     }
   }
   }
@@ -1193,13 +1204,14 @@ a{
           flex-direction: column;
           height: auto;
           align-items: center;
+       
         }
         &Store{
           width:50%;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          @include tbPad();
+          
           @include media(){
             margin-bottom: 64px;
             width: 100%;
