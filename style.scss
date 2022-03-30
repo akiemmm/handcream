@@ -46,6 +46,11 @@ $yumincho:"游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho
   text-decoration: none;
   transition: all ease 0.3s;
 }
+@mixin tbPad{
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
 @mixin spPad{
   padding-left: 20px;
   padding-right: 20px;
@@ -441,6 +446,9 @@ a{
     min-height: 100vh;
     @include media(){
       align-items: flex-start;
+      @include tbPad();
+    }
+    @include media(sp){
       @include spPad();
     }
     &__inner{
@@ -579,6 +587,9 @@ a{
     justify-content: center;
     align-items: center;
     @include media(){
+      @include tbPad();
+    }
+    @include media(sp){
       @include spPad();
     }
     &__inner{
@@ -634,6 +645,9 @@ a{
     box-sizing: border-box;
     position: relative; 
     @include media(){
+      @include tbPad();
+    }
+    @include media(sp){
       @include spPad();
     }
     &__inner{
@@ -699,11 +713,12 @@ a{
         box-sizing: border-box;
         @include media(lt){
           width: 100%;
-          @include spPad();
+          @include tbPad();
         }
         @include media(sp){
           padding-top: 40px;
           padding-bottom: 40px;
+          @include spPad();
         }
         &Box{
           max-width: 580px;
@@ -757,7 +772,7 @@ a{
   &-sales{
     min-height: 100vh;
     box-sizing: border-box;
-    @include spPad();
+    @include tbPad();
     @include media(lt){
       padding-top: 80px;
       padding-bottom: 80px;
@@ -765,6 +780,7 @@ a{
     @include media(sp){
       padding-top: 40px;
       padding-bottom: 40px;
+      @include spPad();
     }
     &__inner{
       display: flex;
@@ -839,7 +855,10 @@ a{
     padding: 80px 0;
     box-sizing: border-box;
     position: relative;
-    @include spPad();
+    @include tbPad();
+    @include media(sp){
+      @include spPad();
+    }
     &__inner{
       &Head{
         text-align: center;
@@ -944,11 +963,14 @@ a{
     padding: 80px 80px;
     box-sizing: border-box;
     @include media (lt){
-      padding: 80px 40px;
+      padding: 80px;
     }
     @include media (){
       padding-top: 40px;
       padding-bottom: 40px;
+      @include tbPad();
+    }
+    @include media (sp){
       @include spPad();
     }
     &__inner{
@@ -980,6 +1002,9 @@ a{
         &Box{
           max-width: 600px;
           width: calc((720 / 1920) * 100vw);
+          @include media (lt){
+            width: calc(50% - 20px);
+          }
           @include media (){
             width: calc((600 / 767) * 100vw);
             &:first-child{
@@ -1014,27 +1039,47 @@ a{
     background: $mainback;
     font-family: $yumincho;
     position: relative;
+    padding: 80px 0;
+    box-sizing: border-box;
+    @include media(){
+      padding: 80px;
+      @include tbPad();
+    }
+    @include media(sp){
+      @include spPad()
+    }
     &__inner{
-      padding: 80px 0;
       &Head{
         &Img{
           display: block;
           margin: 0 auto 80px;
+          @include media(sp){
+            margin: 0 auto 40px;
+          }
         }
       }
       &Flex{
         display: flex;
         max-width: $contl;
-        width: calc((1520 / 1920) * 100vw);
+        width:100%;
         text-align: center;
         margin: 0 auto;
         position: relative;
+        height: calc((700 / 1080) * 100vh);
+        @include media(){
+          flex-direction: column;
+          height: auto;
+          align-items: center;
+        }
         &Store{
           width:50%;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          
+          @include media(){
+            margin-bottom: 64px;
+            width: 100%;
+          }
           &::after {
             margin: 0;
             content: "";
@@ -1045,10 +1090,23 @@ a{
             left: 50%;
             height: calc((700 / 1080) * 100vh);
             top: 0;
+            @include media(){
+              position: static;
+              width: 100%;
+              height: 2px;
+              margin-top: 64px;
+            }
           }
           &Text{
             font-size: $l;
             margin-bottom: 80px;
+            @include media(){
+              font-size: $lm;
+              margin-bottom: 40px;
+            }
+            @include media(sp){
+              font-size: $m;
+            }
           }
           .sw-btn.store.pc{
             margin: 0 auto;
@@ -1062,9 +1120,20 @@ a{
           display: flex;
           flex-direction: column;
           justify-content: center;
+          @include media(){
+            margin-bottom: 40px;
+            width: 100%;
+          }
           &Text{
            font-size: $xl;
             margin-bottom: 80px;
+            @include media(){
+              font-size: $l;
+              margin-bottom: 40px;
+            }
+            @include media(sp){
+              font-size: $lm;
+            }
           }
           .sw-btn.buy.pc{
             margin: 0 auto;
@@ -1080,13 +1149,19 @@ a{
         max-width: 313px;
         width: ((313 / 1920) * 100vw);
         left: 20px;
-        top: 140px;
+        top: 100px;
+        @include media(sp){
+          width: ((160 / 767) * 100vw);
+        }
       }
       &02{
         max-width: 260px;
         width: ((260 / 1920) * 100vw);
         right: 20px;
         bottom: 20px;
+        @include media(){
+          width: ((150 / 767) * 100vw);
+        }
       }
     }
   }
