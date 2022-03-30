@@ -21,6 +21,7 @@ $l: 28px;
 $lm: 24px;
 $m: 20px; //pc時標準
 $ms: 16px; //やや小さめ
+$ms_s: 14px; //もっと小さめ
 $s: 12px;//小さめ
 //コンテンツ幅
 $contl: 1520px;
@@ -58,8 +59,10 @@ $yumincho:"游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho
 }
 //PC最小幅とtb最大幅とsp最大幅を変数に入れる
 $breakpoints: (
+  'sp350': 'screen and (max-width: 350px)',
   'sp': 'screen and (max-width: 428px)',
-  'tb': 'screen and (max-width: 767px)',
+  'sp540': 'screen and (max-width: 540px)',
+  'tb': 'screen and (max-width: 768px)',
   'lt': 'screen and (max-width: 1024px)',
   'pc': 'screen and (min-width: 1025px)'
 );
@@ -77,7 +80,7 @@ $breakpoints: (
 //base
 html{
   font-size: $m;
-  @include media(sp){
+  @include media(){
     font-size: $ms;
   }
 }
@@ -184,8 +187,9 @@ a{
         }
       &.pc{
         @include btnBase(96px, 400px, 48px);
-        @include media(){
+        @include media(lt){
           @include btnBase(48px, 200px, 24px);
+          margin: 0 auto;
         }
         &:hover{
           color: $main;
@@ -193,14 +197,14 @@ a{
         .sw-btn__inner{
           display: block;
           font-size: 32px;
-          @include media(){
+          @include media(lt){
             font-size: $ms;
           }
           &::before {
             content: "";
             width:64px;
             height: 52px;
-            @include media(){
+            @include media(lt){
               width:32px;
               height: 26px;
             }
@@ -234,8 +238,9 @@ a{
             }
           &.pc{
             @include btnBase(96px, 400px, 48px);
-            @include media(){
+            @include media(lt){
               @include btnBase(48px, 200px, 24px);
+              margin: 0 auto;
             }
             &:hover{
               color: $sub;
@@ -243,14 +248,14 @@ a{
             .sw-btn__inner{
               display: block;
               font-size: 32px;
-              @include media(){
+              @include media(lt){
                 font-size: $ms;
               }
               &::before {
                 content: "";
                 width:64px;
                 height: 52px;
-                @include media(){
+                @include media(lt){
                   width:32px;
                   height: 26px;
                 
@@ -261,17 +266,13 @@ a{
         }
   }
 }
-.nav{
-  &-closebtn{
 
-  }
-}
 
 //header
 //footer
 .st{
   &-header{
-    @include media() {
+    @include media(lt) {
       display: none;
     }
     display: flex;
@@ -281,7 +282,7 @@ a{
     height: 120px;
     background: rgba(255, 255, 255, 0.8);
     width: 100%;
-    padding: 20px 40px;
+    padding: 20px;
     box-sizing: border-box;
     &__inner{
 
@@ -299,10 +300,13 @@ a{
       &Nav{
         display: flex;
         align-items: center;
+        @media (max-width: 1280px){
+          font-size: $ms;
+        }
         &List{
           display: flex;
           &Item{
-            margin-right: 40px;
+            margin-right: calc((40 / 1920)* 100vw);
             &Link{
             display: block;
             font-weight: bold;
@@ -317,22 +321,48 @@ a{
     font-size: $ms;
     background: $mainback;
     &__inner{
-      max-width: $conts;
+      max-width: 1160px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 100px;
       margin: 0 auto;
+      @include spPad();
+      @include media(lt){
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding: 80px 0;
+      }
       &Company{
         font-size: $lm;
+        @include media(lt){
+          margin-bottom: 40px;
+        }
       }
       &Nav{
         display: flex;
         align-items: center;
+        @include media(lt){
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          
+        }
         &List{
           display: flex;
+          @include media(lt){
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+          }
           &Item{
-            margin-right: 30px; 
+            margin-right: calc((30 / 1920) * 100vw); 
+            @include media(lt){
+              margin-bottom: 20px;
+            }
             &Link{
               color: $font;
             }
@@ -371,7 +401,7 @@ a{
     z-index: 100;
     &Sp{
       display: none;
-      @include media()  {
+      @include media(lt)  {
         display: block;
       }
       position: fixed;
@@ -400,7 +430,47 @@ a{
               }
             }
         }
-         
+        &Btn{
+          background: transparent;
+          cursor: pointer;
+          padding-bottom: 0;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 40px;
+          width: 40px;
+          z-index: 1000;
+          &Bar{
+            background: $main;
+            display: block;
+            height: 8px;
+            border-radius: 4px;
+            
+            position: absolute;
+            top: 40%;
+            right: 0;
+            width: 40px;
+            &::before, &::after{
+              content: "";
+              background: $main;
+              height: 100%;
+              left: 50%;
+              margin: 0 0 0 -50%;
+              position: absolute;
+              top: 50%;
+              width: 100%;
+              border-radius: 4px;
+            }
+            &::before{
+              margin-top: -48%;
+            }
+            &::after{
+              margin-top: 28%;
+            }
+          }
+        }
       }
     }
   }
@@ -411,7 +481,7 @@ a{
   display: none;
   @include media() {
     display: none;
-    &.active{
+    &.is-active{
       display: block;
     }
   }
@@ -435,7 +505,11 @@ a{
   }
 
 }
+.nav{
+  &-closebtn{
 
+  }
+}
 //場所によっては例外もある
 .lp{
   &-mv{
@@ -446,6 +520,7 @@ a{
     min-height: 100vh;
     @include media(){
       align-items: flex-start;
+      justify-content: flex-start;
       @include tbPad();
     }
     @include media(sp){
@@ -462,46 +537,33 @@ a{
       }
       &Box{
         width: calc(100vw - 20.8vw);
+        @include media(sp){
+          width: 100%;
+        }
         &Head{
           margin-left: -40px;
           @include media(){
-            margin-left: -30px;
-          width: calc((350 / 375) * 100vw);
+            width: 85vw;
+            margin-left: -20px;
           }
+          @include media(sp){
+            width: calc(100% + 20px);
+          }
+
+
         }
         
         &Text{
           font-family: $yumincho;
           font-weight: bold;
           text-shadow: 0 0 3px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,1), 0 0 7px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,1);
+          @include media(sp540){
+            font-size: $ms;
+          }
         }
           
       }
-      &Button{
-        color: $main;
-        background: transparent;
-        cursor: pointer;
-        font-size: 12px;
-        padding-bottom: 0;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 64px;
-       width: 64px;
-        &Bar{
-          color: $main;
-          display: block;
-          height: 8px;
-          margin: 0 0 0 10%;
-          position: absolute;
-          top: 40%;
-          left: 45%;
-          width: 40px;
-        }
-      }
-
+      
     }
     &__list{
       &Item{
@@ -600,6 +662,9 @@ a{
       &Box{
         max-width: $contl;
         width: calc(100vw - 400px) ;
+        @include media(lt){
+          width: calc(100vw - 200px) ;
+        }
         @include media(){
           width: 100%;
         }
@@ -625,6 +690,12 @@ a{
           @include media(){
             font-size: $lm;
             text-align: center;
+          }
+          @include media(sp540){
+            font-size: $m;
+          }
+          @include media(sp350){
+            font-size: $ms;
           }
           &:first-of-type{
             margin-bottom: 1em;
@@ -661,9 +732,14 @@ a{
         margin: 0 auto;
         z-index:1;
         background: radial-gradient(#fff 66%, rgba(255,255,255,0.5) 70%,transparent 76%);
+        margin-bottom: 40px;
         @include media(){
           font-size: $lm;
+          padding: 20px 0;
           max-width: 440px;
+        }
+        @include media(sp){
+          font-size: $m;
         }
       }
       &Img{
@@ -721,7 +797,7 @@ a{
           @include spPad();
         }
         &Box{
-          max-width: 580px;
+          max-width: 560px;
           width: 62.5%;
           @include media(lt){
             width: 100%;
@@ -745,7 +821,7 @@ a{
             @include media(){
               font-size: $m;
             }
-            @include media(sp){
+            @include media(sp540){
               font-size: $ms;
             }
             &:not(:last-child){
@@ -778,8 +854,6 @@ a{
       padding-bottom: 80px;
     }
     @include media(sp){
-      padding-top: 40px;
-      padding-bottom: 40px;
       @include spPad();
     }
     &__inner{
@@ -805,17 +879,27 @@ a{
             width:80%;
           }
           @include media(){
+            max-width: 560px;
             width:100%;
           }
           &Head{
             color: $mainh;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 0.5em;
             font-size: $xl;
+            @include media(){
+              font-size: $l;
+            }
+            @include media(sp){
+              font-size: $lm;
+            }
           }
           &Text{
             font-family: $meiryo;
             margin-bottom: 1em;
+            @include media(sp){
+              font-size: $ms_s;
+            }
             &Through{
               text-decoration: line-through;
             }
@@ -823,6 +907,7 @@ a{
               font-weight: bold;
               color: #c40000;
             }
+
           }
 
         }
@@ -864,7 +949,8 @@ a{
         text-align: center;
         margin-bottom: 80px;
         @include media(){
-          margin-bottom: 40px;
+          max-width: 520px;
+          margin: 0 auto 40px;
         }
         &Img{
           display: block;
@@ -891,7 +977,6 @@ a{
         margin: 0 auto;
         @include media(){
           flex-direction: column;
-          padding: 40px 0;
         }
         &Box{
           max-width: 560px;
@@ -905,22 +990,35 @@ a{
             font-weight: bold;
             font-family: $yumincho;
             font-size: $l;
+            @include media(){
+              font-size: $lm;
+            }
+            @include media(sp){
+              font-size: $m;
+            }
           }
           &Img{
+            margin-bottom: 20px;
             
           }
           &01{
 
           } 
           &02{
-            margin-top: calc((408 / 1920)* 100vw);
+            margin-top: calc((460 / 1080)* 100vh);
             @include media(){
+              margin-top: 80px;
+            }
+            @include media(sp){
               margin-top: 40px;
             }
           } 
           &03{
             margin-top: -200px;
             @include media(){
+              margin-top: 80px;
+            }
+            @include media(sp){
               margin-top: 40px;
             }
           }
@@ -928,7 +1026,7 @@ a{
       }
       &Img{
         &Sakura{
-          @include media(lt){
+          @include media(){
             display: none;
           }
           position: absolute;
@@ -937,19 +1035,29 @@ a{
             width: calc((472 / 1920) * 100vw); 
             top: 150px;
             right: 0;
+            @include media(lt){
+              width: calc((300 / 1024) * 100vw); 
+            }
           }
           &02{
-            max-width: 368px;
-            width: calc((368 / 1920) * 100vw); 
+            max-width: 400px;
+            width: calc((400 / 1920) * 100vw); 
             top: 53%;
             transform:translateY(-50%);
             left: 0;
+            @include media(lt){
+              top: 50%;
+              width: calc((250 / 1024) * 100vw); 
+            }
           }
           &03{
             max-width: 578px;
             width: calc((578 / 1920) * 100vw); 
             bottom: 0;
             right: 0;
+            @include media(lt){
+              width: calc((360 / 1024) * 100vw); 
+            }
             
           }
 
@@ -966,8 +1074,6 @@ a{
       padding: 80px;
     }
     @include media (){
-      padding-top: 40px;
-      padding-bottom: 40px;
       @include tbPad();
     }
     @include media (sp){
@@ -998,6 +1104,7 @@ a{
           flex-direction: column;
           justify-content: flex-start;
           align-items: center;
+          
         }
         &Box{
           max-width: 600px;
@@ -1006,23 +1113,39 @@ a{
             width: calc(50% - 20px);
           }
           @include media (){
-            width: calc((600 / 767) * 100vw);
+            max-width: 560px;
+            width: 100%;
             &:first-child{
-              margin-bottom: 40px;
+              margin-bottom: 80px;
             }
           }
           @include media (sp){
             width: 100%;
+            &:first-child{
+              margin-bottom: 40px;
+            }
           }
           &Name{
             font-size: $lm;
             color: $mainh;
             font-family: $yumincho;
             font-weight: bold;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
+            @include media (){
+              font-size: $m;
+            }
+            @include media (sp){
+              font-size: $ms;
+            }
           }
           &Text{
             line-height: 1.5;
+            @include media (){
+              font-size: $ms;
+            }
+            @include media (sp){
+              font-size: $ms_s;
+            }
           }
         }
       }
@@ -1076,6 +1199,7 @@ a{
           display: flex;
           flex-direction: column;
           justify-content: center;
+          @include tbPad();
           @include media(){
             margin-bottom: 64px;
             width: 100%;
@@ -1120,6 +1244,7 @@ a{
           display: flex;
           flex-direction: column;
           justify-content: center;
+          @include tbPad();
           @include media(){
             margin-bottom: 40px;
             width: 100%;
@@ -1150,8 +1275,14 @@ a{
         width: ((313 / 1920) * 100vw);
         left: 20px;
         top: 100px;
-        @include media(sp){
-          width: ((160 / 767) * 100vw);
+        @include media(){
+          top: 80px;
+          left: 40px;
+          width: ((190 / 767) * 100vw);
+        }
+        @include media(){
+          top: 20px;
+          left: 20px;
         }
       }
       &02{
@@ -1160,7 +1291,13 @@ a{
         right: 20px;
         bottom: 20px;
         @include media(){
-          width: ((150 / 767) * 100vw);
+          width: ((180 / 767) * 100vw);
+          right: 40px;
+          bottom: 40px;
+        }
+        @include media(sp){
+          right: 20px;
+          bottom: 20px;
         }
       }
     }
