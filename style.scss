@@ -486,7 +486,7 @@ a{
   z-index: 1001;
   min-height: 100vh;
   width: 100vw;
-  @include media() {
+  @include media(lt) {
     display: none;
     &.is-active{
       animation: hamburger-open .5s ease;
@@ -505,22 +505,69 @@ a{
         flex-direction: column;
         align-items: center;
       &Item{
+        margin-bottom: 1.5em;
         &Link{
         display: block;
         font-weight: bold;
+        font-size: $lm;
         color: $font;
         }
-
+      }
+    }
+    &Sns{
+      &Link{
+        &:first-child{
+          margin-right:40px;
+        }
+      }
     }
   }
-  }
-
+  &__closeBtn{   
+      //display: none;
+      box-sizing: border-box;
+      background-color: transparent;
+      cursor: pointer;
+      height: 64px;
+      width: 64px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 200;
+      border: none;
+        &Bar{
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        vertical-align: bottom;
+        &::before, &::after{
+          display: block;
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 8px;
+          border-radius: 4px;
+          height: 42px;
+          margin: -76% 0 0 -10%;
+          background: $main;
+        }
+        &::before{
+          transform: rotate(-45deg);
+        }
+        &::after{
+          transform: rotate(45deg);
+        }
+      }
+    }
+    .sw-btn.buy{
+      margin-bottom:40px;
+    }
 }
-.nav{
-  &-closebtn{
 
-  }
-}
 //場所によっては例外もある
 .lp{
   &-mv{
@@ -728,6 +775,9 @@ a{
     position: relative; 
     @include media(){
       @include tbPad();
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     @include media(sp){
       @include spPad();
@@ -1166,6 +1216,9 @@ a{
       font-size: $ms;
       width: 100%;
       display: inline-block;
+      @include media (sp){
+        font-size: $s;
+      }
     }
   }
   &-shop{

@@ -536,7 +536,7 @@ a:hover, a:focus {
   width: 100vw;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .st-headerSpMenu {
     display: none;
   }
@@ -560,10 +560,68 @@ a:hover, a:focus {
   align-items: center;
 }
 
+.st-headerSpMenuNavListItem {
+  margin-bottom: 1.5em;
+}
+
 .st-headerSpMenuNavListItemLink {
   display: block;
   font-weight: bold;
+  font-size: 24px;
   color: #443F3F;
+}
+
+.st-headerSpMenuNavSnsLink:first-child {
+  margin-right: 40px;
+}
+
+.st-headerSpMenu__closeBtn {
+  box-sizing: border-box;
+  background-color: transparent;
+  cursor: pointer;
+  height: 64px;
+  width: 64px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 200;
+  border: none;
+}
+
+.st-headerSpMenu__closeBtnBar {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  vertical-align: bottom;
+}
+
+.st-headerSpMenu__closeBtnBar::before, .st-headerSpMenu__closeBtnBar::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  border-radius: 4px;
+  height: 42px;
+  margin: -76% 0 0 -10%;
+  background: #FF9A9A;
+}
+
+.st-headerSpMenu__closeBtnBar::before {
+  transform: rotate(-45deg);
+}
+
+.st-headerSpMenu__closeBtnBar::after {
+  transform: rotate(45deg);
+}
+
+.st-headerSpMenu .sw-btn.buy {
+  margin-bottom: 40px;
 }
 
 .lp-mv {
@@ -851,6 +909,9 @@ a:hover, a:focus {
     padding-left: 40px;
     padding-right: 40px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -1485,6 +1546,12 @@ a:hover, a:focus {
   font-size: 16px;
   width: 100%;
   display: inline-block;
+}
+
+@media screen and (max-width: 428px) {
+  .lp-voice__annotation {
+    font-size: 12px;
+  }
 }
 
 .lp-shop {
