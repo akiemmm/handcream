@@ -105,7 +105,9 @@ a{
 //btnなど
 .sw{
   &-pageTop{
-    position: relative;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
     background: $main;
     width: 64px;
     height: 64px;
@@ -113,9 +115,14 @@ a{
     display: block;
     color: $fontw;
     text-decoration: none;
-    /*opacity: 0;
+    cursor: pointer;
+    opacity: 0;
     visibility: hidden;
-    transition: opacity .5s;*/
+    transition: opacity .5s;
+    &.is-active{
+      opacity: 1;
+      visibility: visible;
+    }
     span{
       position: absolute;
       font-size: 0.75rem;
@@ -515,10 +522,18 @@ a{
   width: 100vw;
   @include media(lt) {
     display: none;
-    &.is-active{
+    &.is-open{
       animation: hamburger-open .5s ease;
       display: block;
       opacity: 1;
+      visibility: visible;
+
+    }
+    &.is-close{
+      animation: hamburger-open .5s ease;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
 
     }
   }    
@@ -660,6 +675,7 @@ a{
     }
     &__list{
       &Item{
+        overflow-x: hidden;
         min-height: 100vh;
         width: 100%;
         position: absolute;
@@ -692,7 +708,6 @@ a{
 
         }
         &02{
-          overflow: hidden;
           z-index:1;
           .lp-mv__listItemHand{
             position: absolute;
@@ -852,15 +867,19 @@ a{
         max-height: 316px;
         margin: 0 auto;
         z-index:1;
-        background: radial-gradient(#fff 66%, rgba(255,255,255,0.5) 70%,transparent 76%);
+        background: radial-gradient(#fff 66%, rgba(255,255,255,0.5) 70%,rgba(255,255,255,0)  76%);
         margin-bottom: 40px;
         @include media(){
           font-size: $lm;
-          padding: 20px 0;
-          max-width: 440px;
+          padding: 30px;
+          max-width: 460px;
+          width: 100%;
+          background: radial-gradient(#fff 60%, rgba(255,255,255,0.5) 65%,rgba(255,255,255,0)  70%);
+
         }
         @include media(sp){
           font-size: $m;
+          padding: 20px;
         }
       }
       &Img{
@@ -1230,7 +1249,8 @@ a{
           display: block;
           margin: 0 auto;
           @include media (){
-              width: 33vw;
+            width: 32vw;
+            min-width: 220px;
           }
             
         }

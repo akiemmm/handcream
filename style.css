@@ -27,7 +27,9 @@ a:hover, a:focus {
 }
 
 .sw-pageTop {
-  position: relative;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   background: #FF9A9A;
   width: 64px;
   height: 64px;
@@ -35,9 +37,15 @@ a:hover, a:focus {
   display: block;
   color: #fff;
   text-decoration: none;
-  /*opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s;*/
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s;
+}
+
+.sw-pageTop.is-active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .sw-pageTop span {
@@ -580,10 +588,17 @@ a:hover, a:focus {
   .st-headerSpMenu {
     display: none;
   }
-  .st-headerSpMenu.is-active {
+  .st-headerSpMenu.is-open {
     animation: hamburger-open .5s ease;
     display: block;
     opacity: 1;
+    visibility: visible;
+  }
+  .st-headerSpMenu.is-close {
+    animation: hamburger-open .5s ease;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -757,6 +772,7 @@ a:hover, a:focus {
 }
 
 .lp-mv__listItem {
+  overflow-x: hidden;
   min-height: 100vh;
   width: 100%;
   position: absolute;
@@ -801,7 +817,6 @@ a:hover, a:focus {
 }
 
 .lp-mv__listItem02 {
-  overflow: hidden;
   z-index: 1;
 }
 
@@ -1027,21 +1042,24 @@ a:hover, a:focus {
   max-height: 316px;
   margin: 0 auto;
   z-index: 1;
-  background: radial-gradient(#fff 66%, rgba(255, 255, 255, 0.5) 70%, transparent 76%);
+  background: radial-gradient(#fff 66%, rgba(255, 255, 255, 0.5) 70%, rgba(255, 255, 255, 0) 76%);
   margin-bottom: 40px;
 }
 
 @media screen and (max-width: 768px) {
   .lp-spring__innerHead {
     font-size: 24px;
-    padding: 20px 0;
-    max-width: 440px;
+    padding: 30px;
+    max-width: 460px;
+    width: 100%;
+    background: radial-gradient(#fff 60%, rgba(255, 255, 255, 0.5) 65%, rgba(255, 255, 255, 0) 70%);
   }
 }
 
 @media screen and (max-width: 428px) {
   .lp-spring__innerHead {
     font-size: 20px;
+    padding: 20px;
   }
 }
 
@@ -1582,7 +1600,8 @@ a:hover, a:focus {
 
 @media screen and (max-width: 768px) {
   .lp-voice__innerHeadImg {
-    width: 33vw;
+    width: 32vw;
+    min-width: 220px;
   }
 }
 
