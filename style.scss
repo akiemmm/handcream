@@ -265,6 +265,14 @@ a{
           }  
         }
   }
+  &-br{
+    &--sp{
+      display: none;
+      @include media(sp){
+      display: inline;
+      }
+    }
+  }
 }
 
 
@@ -576,6 +584,7 @@ a{
     align-items: center;
     position: relative;
     min-height: 100vh;
+    
     @include media(){
       align-items: flex-start;
       justify-content: flex-start;
@@ -595,17 +604,25 @@ a{
       }
       &Box{
         width: calc(100vw - 20.8vw);
+        @include media(lt){
+          width: calc(100vw - 160px);
+        }
+        
         @include media(sp){
           width: 100%;
         }
         &Head{
-          margin-left: -40px;
+          margin-left: calc((52 / 1920) * -100vw);
+          width: 50vw;
+          @include media(lt){
+            margin-left: calc((30 / 1024) * -100vw);
+          }
           @include media(){
             width: 85vw;
-            margin-left: -20px;
+            margin-left: calc((42 / 767) * -100vw);
           }
           @include media(sp){
-            width: calc(100% + 20px);
+            width: calc(100% + 30px);
           }
 
 
@@ -634,35 +651,50 @@ a{
           z-index:2;
           .lp-mv__listItemHandcream{
             position: absolute;
-            right: 20.8vw;
+            right: 20.4vw;
             height: ((760 / 1080) * 100vh);          
             top: calc(50% + 60px);
-            transform: translateY(-50%);
+            transform: translate(50%, -50%);
+            @include media(lt){
+              height: ((700 / 1080) * 100vh);
+              transform: translate(50%, -50%);
+            }
             @include media(){
               top: auto;
               transform: translateY(0);
               bottom: 40px;
               height: ((315 / 667) * 100vh);
               right: ( (20 / 375) *100vw );
-              margin-bottom: 20px;
+            }
+            @include media(sp){
+              bottom: 20px;
             }
           }
 
         }
         &02{
+          overflow: hidden;
           z-index:1;
           .lp-mv__listItemHand{
             position: absolute;
-            right: 12vw;
+            right:calc((160 / 1920) * 100vw);
             bottom: 0;
             max-height: 942px;
+            height: calc(100vh - 200px);
+            @media (max-width:1280px){
+              right:calc((140 / 1920) * 100vw);
+            }
+            @include media(lt){
+              overflow: hidden;
+              right:calc((60 / 1024) * -100vw);
+              height: calc(100vh - 220px);
+            }
+            @include media(){
+              height: ((315 / 667) * 100vh);
+              right: ((20 / 375) * 100vw );
+  
+            }
           }
-          @include media(){
-            height: ((315 / 667) * 100vh);
-            right: ( (20 / 375) *100vw );
-
-          }
-
         }
         &03{
           height: 100vh;
@@ -687,9 +719,13 @@ a{
           right: 20px;
           bottom: 20px;
           @include media(){
+            width: ((160 / 767) * 100vw);
             right: auto;
-            left: calc((30 /667) * 100vw);
+            left: calc((30 /767) * 100vw);
             bottom: 40px;
+          }
+          @include media(sp){
+            bottom: 20px;
           }
         }
 
