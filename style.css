@@ -274,6 +274,36 @@ a:hover, a:focus {
   }
 }
 
+.sw-br--notTb {
+  display: inline;
+}
+
+@media screen and (max-width: 768px) {
+  .sw-br--notTb {
+    display: none;
+  }
+}
+
+.sw-br--tb {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .sw-br--tb {
+    display: inline;
+  }
+}
+
+.sw-br--notSp {
+  display: inline;
+}
+
+@media screen and (max-width: 428px) {
+  .sw-br--notSp {
+    display: none;
+  }
+}
+
 .sw-br--sp {
   display: none;
 }
@@ -684,7 +714,7 @@ a:hover, a:focus {
   }
 }
 
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 768px) {
   .lp-mv__innerBox {
     width: 100%;
   }
@@ -758,13 +788,14 @@ a:hover, a:focus {
     top: auto;
     transform: translateY(0);
     bottom: 40px;
-    height: 47.22639vh;
+    height: 54.6875vh;
     right: 5.33333vw;
   }
 }
 
 @media screen and (max-width: 428px) {
   .lp-mv__listItem01 .lp-mv__listItemHandcream {
+    height: 47.22639vh;
     bottom: 20px;
   }
 }
@@ -798,8 +829,14 @@ a:hover, a:focus {
 
 @media screen and (max-width: 768px) {
   .lp-mv__listItem02 .lp-mv__listItemHand {
-    height: 47.22639vh;
+    height: 62.5vh;
     right: 5.33333vw;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .lp-mv__listItem02 .lp-mv__listItemHand {
+    height: 47.22639vh;
   }
 }
 
@@ -1016,8 +1053,8 @@ a:hover, a:focus {
 }
 
 .lp-spring__innerImg--sakura01 {
-  max-width: 510px;
-  width: 26.56vw;
+  max-width: 420px;
+  width: calc((420 / 1920)* 100vw);
   position: absolute;
   left: 0;
   top: 300px;
@@ -1025,13 +1062,28 @@ a:hover, a:focus {
 
 @media screen and (max-width: 1024px) {
   .lp-spring__innerImg--sakura01 {
-    display: none;
+    top: 340px;
+    width: calc((180 / 1024)* 100vw);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lp-spring__innerImg--sakura01 {
+    top: 80px;
+    width: calc((160/ 768)* 100vw);
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .lp-spring__innerImg--sakura01 {
+    top: 40px;
+    width: calc((120/ 375)* 100vw);
   }
 }
 
 .lp-spring__innerImg--sakura02 {
-  max-width: 516px;
-  width: 26.875vw;
+  max-width: 400px;
+  width: calc((400/ 1920)* 100vw);
   position: absolute;
   right: 0;
   top: 300px;
@@ -1039,7 +1091,23 @@ a:hover, a:focus {
 
 @media screen and (max-width: 1024px) {
   .lp-spring__innerImg--sakura02 {
-    display: none;
+    top: 340px;
+    width: calc((160/ 1024)* 100vw);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .lp-spring__innerImg--sakura02 {
+    top: auto;
+    bottom: 80px;
+    width: calc((160/ 768)* 100vw);
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .lp-spring__innerImg--sakura02 {
+    bottom: 40px;
+    width: calc((120/ 375)* 100vw);
   }
 }
 

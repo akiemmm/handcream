@@ -266,6 +266,25 @@ a{
         }
   }
   &-br{
+    &--notTb{
+      display: inline;
+      @include media(){
+        display: none;
+        }
+    }
+    &--tb{
+      display: none;
+      @include media(){
+        display: inline;
+        }
+    }
+    &--notSp{
+      display: inline;
+      @include media(sp){
+        display: none;
+        }
+    }
+      
     &--sp{
       display: none;
       @include media(sp){
@@ -607,8 +626,7 @@ a{
         @include media(lt){
           width: calc(100vw - 160px);
         }
-        
-        @include media(sp){
+        @include media(){
           width: 100%;
         }
         &Head{
@@ -663,10 +681,11 @@ a{
               top: auto;
               transform: translateY(0);
               bottom: 40px;
-              height: ((315 / 667) * 100vh);
+              height: ((560 / 1024) * 100vh);
               right: ( (20 / 375) *100vw );
             }
             @include media(sp){
+              height: ((315 / 667) * 100vh);
               bottom: 20px;
             }
           }
@@ -690,10 +709,15 @@ a{
               height: calc(100vh - 220px);
             }
             @include media(){
-              height: ((315 / 667) * 100vh);
+              height: ((640 / 1024) * 100vh);
               right: ((20 / 375) * 100vw );
   
             }
+            @include media(sp){
+              height: ((315 / 667) * 100vh);
+  
+            }
+
           }
         }
         &03{
@@ -847,23 +871,42 @@ a{
           width: 75vw;
         }
         &--sakura01{
-          max-width: 510px;
-          width: 26.56vw;
+          max-width: 420px;
+          width: calc((420 / 1920)* 100vw);
           position: absolute;
           left: 0;
           top: 300px;
           @include media(lt){
-            display: none;
+            top: 340px;
+            width: calc((180 / 1024)* 100vw);
+          }
+          @include media(){
+            top: 80px;
+            width: calc((160/ 768)* 100vw);
+          }
+          @include media(sp){
+            top: 40px;
+            width: calc((120/ 375)* 100vw);
           }
         }
         &--sakura02{
-          max-width: 516px;
-          width: 26.875vw;
+          max-width:400px;
+          width: calc((400/ 1920)* 100vw);
           position: absolute;
           right: 0;
           top: 300px;
           @include media(lt){
-            display: none;
+            top: 340px;
+            width: calc((160/ 1024)* 100vw);
+          }
+          @include media(){
+            top: auto;
+            bottom: 80px;
+            width: calc((160/ 768)* 100vw);
+          }
+          @include media(sp){
+            bottom: 40px;
+            width: calc((120/ 375)* 100vw);
           }
         }
       }
