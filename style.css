@@ -791,6 +791,7 @@ a:hover, a:focus {
 .lp-mv__listItem01 .lp-mv__listItemHandcream {
   z-index: 0;
   opacity: 0;
+  transition: opacity .5s transform .5s;
   transform: tramslateX(-10%);
   position: absolute;
   right: 20.4vw;
@@ -825,6 +826,7 @@ a:hover, a:focus {
 .lp-mv__listItem02 .lp-mv__listItemHand {
   z-index: 0;
   opacity: 0;
+  transition: opacity .5s;
   position: absolute;
   right: calc((160 / 1920) * 100vw);
   bottom: 0;
@@ -863,6 +865,7 @@ a:hover, a:focus {
   z-index: 0;
   opacity: 0;
   height: 100vh;
+  transition: opacity .5s;
   background: url(img/mv03.jpg) center/cover no-repeat;
   width: 100%;
 }
@@ -874,6 +877,7 @@ a:hover, a:focus {
 .lp-mv__listItem .lp-mv__listItemSakura01 {
   z-index: 0;
   opacity: 0;
+  transition: opacity .5s;
   max-width: 313px;
   width: 16.30208vw;
   position: absolute;
@@ -890,6 +894,7 @@ a:hover, a:focus {
 .lp-mv__listItem .lp-mv__listItemSakura02 {
   z-index: 0;
   opacity: 0;
+  transition: opacity .5s;
   max-width: 260px;
   width: 13.54167vw;
   position: absolute;
@@ -913,15 +918,15 @@ a:hover, a:focus {
 }
 
 .lp-mv__list.lp-mv__list--01 .lp-mv__listItem01 .lp-mv__listItemHandcream {
-  animation: rightIn .6s ease-out 1.5s forwards;
+  animation: rightInMv 2.7s cubic-bezier(0.2, 0.5, 0.7, 1) 1s forwards;
 }
 
 .lp-mv__list.lp-mv__list--01 .lp-mv__listItem01 .lp-mv__listItemSakura01 {
-  animation: leftIn .6s ease-out 1.5s forwards;
+  animation: leftInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
 }
 
 .lp-mv__list.lp-mv__list--01 .lp-mv__listItem01 .lp-mv__listItemSakura02 {
-  animation: rightIn .6s ease-out 1.5s forwards;
+  animation: rightInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
 }
 
 .lp-mv__list.lp-mv__list--01 + .lp-mv__pagination .lp-mv__paginationBtn--01 {
@@ -929,15 +934,15 @@ a:hover, a:focus {
 }
 
 .lp-mv__list.lp-mv__list--02 .lp-mv__listItem02 .lp-mv__listItemHand {
-  animation: fadeIn .6s ease 1.5s forwards;
+  animation: fadeInMv 2.7s cubic-bezier(0.2, 0.5, 0.7, 1) 1s forwards;
 }
 
 .lp-mv__list.lp-mv__list--02 .lp-mv__listItem02 .lp-mv__listItemSakura01 {
-  animation: leftIn .6s ease 1.5s forwards;
+  animation: leftInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
 }
 
 .lp-mv__list.lp-mv__list--02 .lp-mv__listItem02 .lp-mv__listItemSakura02 {
-  animation: rightIn .6s ease 1.5s forwards;
+  animation: rightInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
 }
 
 .lp-mv__list.lp-mv__list--02 + .lp-mv__pagination .lp-mv__paginationBtn--02 {
@@ -945,8 +950,7 @@ a:hover, a:focus {
 }
 
 .lp-mv__list.lp-mv__list--03 .lp-mv__listItem03 {
-  transition: opacity .5s;
-  animation: fadeIn .6s ease 1.5s forwards;
+  animation: fadeInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
 }
 
 .lp-mv__list.lp-mv__list--03 + .lp-mv__pagination .lp-mv__paginationBtn--03 {
@@ -1999,50 +2003,112 @@ a:hover, a:focus {
 
 /*Mvアニメーション*/
 /*右から左*/
-@keyframes rightIn {
+@keyframes rightInMv {
   0% {
     opacity: 0;
     z-index: 1;
     transform: translateX(25%);
   }
   25% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  to {
     opacity: 1;
     z-index: 1;
     transform: translateX(0);
   }
-}
-
-@keyframes rightOut {
-  0% {
+  50% {
     opacity: 1;
-    z-index: 1;
     transform: translateX(0);
   }
-  25% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 0.5;
+  70% {
+    opacity: 1;
+    transform: translateX(0);
   }
   80% {
-    opacity: 0.25;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 0.5;
+    transform: translateX(5%);
   }
   to {
     opacity: 0;
-    z-index: 0;
-    transform: translateX(25%);
+    z-index: 1;
+    transform: translateX(10%);
   }
 }
 
+@keyframes leftInMv {
+  0% {
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(-25%);
+  }
+  25% {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 0.5;
+    transform: translateX(-5%);
+  }
+  to {
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes fadeInMv {
+  0% {
+    z-index: 1;
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    z-index: 1;
+    opacity: 1;
+    visibility: hidden;
+  }
+  to {
+    z-index: 1;
+    opacity: 0;
+  }
+}
+
+/*汎用*/
 /*@keyframes rightInOut{
 	0%{
     opacity: 0;
@@ -2067,25 +2133,59 @@ a:hover, a:focus {
 	}
 }
 */
-@keyframes leftIn {
+@keyframes leftInMv {
   0% {
     opacity: 0;
     z-index: 1;
     transform: translateX(-25%);
   }
   25% {
-    opacity: 0.25;
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  90% {
+    opacity: 0.5;
+    transform: translateX(-5%);
+  }
+  to {
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes rightOut {
+  0% {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0);
+  }
+  25% {
+    opacity: 0.8;
   }
   50% {
     opacity: 0.5;
   }
   80% {
-    opacity: 0.8;
+    opacity: 0.25;
   }
   to {
-    opacity: 1;
-    z-index: 1;
-    transform: translateX(0);
+    opacity: 0;
+    z-index: 0;
+    transform: translateX(25%);
   }
 }
 
@@ -2114,34 +2214,3 @@ a:hover, a:focus {
     transform: translateX(-25%);
 	}
 }*/
-@keyframes fadeIn {
-  0% {
-    z-index: 1;
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.25;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  to {
-    z-index: 1;
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    z-index: 1;
-    opacity: 1;
-    visibility: hidden;
-  }
-  to {
-    z-index: 1;
-    opacity: 0;
-  }
-}
