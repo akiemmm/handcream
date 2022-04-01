@@ -539,7 +539,7 @@ a:hover, a:focus {
   justify-content: center;
   height: 40px;
   width: 40px;
-  z-index: 1000;
+  z-index: 199;
 }
 
 .st-headerSp__innerBtnBar {
@@ -579,24 +579,23 @@ a:hover, a:focus {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1001;
+  z-index: 200;
   min-height: 100vh;
   width: 100vw;
 }
 
 @media screen and (max-width: 1024px) {
   .st-headerSpMenu {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
   }
   .st-headerSpMenu.is-open {
     animation: hamburger-open .5s ease;
-    display: block;
     opacity: 1;
     visibility: visible;
   }
   .st-headerSpMenu.is-close {
-    animation: hamburger-open .5s ease;
-    display: block;
+    animation: hamburger-close .5s ease;
     opacity: 0;
     visibility: hidden;
   }
@@ -771,8 +770,7 @@ a:hover, a:focus {
   }
 }
 
-.lp-mv__listItem {
-  overflow-x: hidden;
+.lp-mv__list {
   min-height: 100vh;
   width: 100%;
   position: absolute;
@@ -780,16 +778,24 @@ a:hover, a:focus {
   left: 0;
 }
 
-.lp-mv__listItem01 {
-  z-index: 2;
+.lp-mv__listItem {
+  overflow-x: hidden;
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #FFE6E6;
 }
 
 .lp-mv__listItem01 .lp-mv__listItemHandcream {
+  z-index: 0;
+  opacity: 0;
+  transform: tramslateX(-10%);
   position: absolute;
   right: 20.4vw;
   height: 70.37037vh;
-  top: calc(50% + 60px);
-  transform: translate(50%, -50%);
+  bottom: 40px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -816,11 +822,9 @@ a:hover, a:focus {
   }
 }
 
-.lp-mv__listItem02 {
-  z-index: 1;
-}
-
 .lp-mv__listItem02 .lp-mv__listItemHand {
+  z-index: 0;
+  opacity: 0;
   position: absolute;
   right: calc((160 / 1920) * 100vw);
   bottom: 0;
@@ -856,13 +860,20 @@ a:hover, a:focus {
 }
 
 .lp-mv__listItem03 {
+  z-index: 0;
+  opacity: 0;
   height: 100vh;
   background: url(img/mv03.jpg) center/cover no-repeat;
   width: 100%;
-  z-index: 0;
+}
+
+.lp-mv__listItem03 .lp-mv__listItemSakura01, .lp-mv__listItem03 .lp-mv__listItemSakura02 {
+  display: none;
 }
 
 .lp-mv__listItem .lp-mv__listItemSakura01 {
+  z-index: 0;
+  opacity: 0;
   max-width: 313px;
   width: 16.30208vw;
   position: absolute;
@@ -877,6 +888,8 @@ a:hover, a:focus {
 }
 
 .lp-mv__listItem .lp-mv__listItemSakura02 {
+  z-index: 0;
+  opacity: 0;
   max-width: 260px;
   width: 13.54167vw;
   position: absolute;
@@ -897,6 +910,65 @@ a:hover, a:focus {
   .lp-mv__listItem .lp-mv__listItemSakura02 {
     bottom: 20px;
   }
+}
+
+.lp-mv__list.lp-mv__list--01 .lp-mv__listItem01 .lp-mv__listItemHandcream {
+  animation: rightIn .6s ease-out 1.5s forwards;
+}
+
+.lp-mv__list.lp-mv__list--01 .lp-mv__listItem01 .lp-mv__listItemSakura01 {
+  animation: leftIn .6s ease-out 1.5s forwards;
+}
+
+.lp-mv__list.lp-mv__list--01 .lp-mv__listItem01 .lp-mv__listItemSakura02 {
+  animation: rightIn .6s ease-out 1.5s forwards;
+}
+
+.lp-mv__list.lp-mv__list--01 + .lp-mv__pagination .lp-mv__paginationBtn--01 {
+  background: #804d4d;
+}
+
+.lp-mv__list.lp-mv__list--02 .lp-mv__listItem02 .lp-mv__listItemHand {
+  animation: fadeIn .6s ease 1.5s forwards;
+}
+
+.lp-mv__list.lp-mv__list--02 .lp-mv__listItem02 .lp-mv__listItemSakura01 {
+  animation: leftIn .6s ease 1.5s forwards;
+}
+
+.lp-mv__list.lp-mv__list--02 .lp-mv__listItem02 .lp-mv__listItemSakura02 {
+  animation: rightIn .6s ease 1.5s forwards;
+}
+
+.lp-mv__list.lp-mv__list--02 + .lp-mv__pagination .lp-mv__paginationBtn--02 {
+  background: #804d4d;
+}
+
+.lp-mv__list.lp-mv__list--03 .lp-mv__listItem03 {
+  transition: opacity .5s;
+  animation: fadeIn .6s ease 1.5s forwards;
+}
+
+.lp-mv__list.lp-mv__list--03 + .lp-mv__pagination .lp-mv__paginationBtn--03 {
+  background: #804d4d;
+}
+
+.lp-mv__pagination {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.lp-mv__paginationBtn {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #804d4d;
+  border-radius: 50%;
+  margin: 0 12px;
+  cursor: pointer;
 }
 
 .lp-winter {
@@ -1897,5 +1969,179 @@ a:hover, a:focus {
   .lp-shop__Sakura02 {
     right: 20px;
     bottom: 20px;
+  }
+}
+
+/*ハンバーガー*/
+@keyframes hamburger-open {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    z-index: 200;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes hamburger-close {
+  0% {
+    z-index: 200;
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/*Mvアニメーション*/
+/*右から左*/
+@keyframes rightIn {
+  0% {
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(25%);
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rightOut {
+  0% {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0);
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 0;
+    z-index: 0;
+    transform: translateX(25%);
+  }
+}
+
+/*@keyframes rightInOut{
+	0%{
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(25%);
+	}
+  25%{
+		opacity: 1;
+	}
+  50%{
+    opacity: 1;
+    z-index: 1;
+		transform: translateX(0);
+	}
+	75%{
+		opacity: 1;
+	}
+	to{
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(25%);
+	}
+}
+*/
+@keyframes leftIn {
+  0% {
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(-25%);
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0);
+  }
+}
+
+/*@keyframes leftInOut{
+	0%{
+    opacity: 0;
+    z-index: 1;
+    transform: translateX(-25%);
+  }
+  10%{
+    opacity: 1;
+    transform: translateX(0);
+	}
+  50%{
+    opacity: 1;
+    z-index: 1;
+		transform: translateX(0);
+	}
+	90%{
+    opacity: 1;
+    transform: translateX(0);
+	}
+	to{
+    opacity: 0;
+    z-index: 0;
+    transform: translateX(-25%);
+	}
+}*/
+@keyframes fadeIn {
+  0% {
+    z-index: 1;
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  to {
+    z-index: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    z-index: 1;
+    opacity: 1;
+    visibility: hidden;
+  }
+  to {
+    z-index: 1;
+    opacity: 0;
   }
 }
