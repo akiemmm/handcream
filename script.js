@@ -54,7 +54,7 @@ const close = () => {
 	document.getElementById('closeBtn').addEventListener('click', () => {
     close();
 	} );
-  let spMenuLink = document.getElementsByClassName('st-headerSpMenuNavListItemLink');
+  let spMenuLink = document.querySelectorAll('.st-headerSpMenuNav a');
   for(let i = 0 ; i < spMenuLink.length;  i++)
   spMenuLink[i].addEventListener('click', () => {
     close();
