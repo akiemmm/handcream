@@ -700,16 +700,18 @@ a{
             @include media(lt){
               height: ((700 / 1080) * 100vh);
               transform: translate(50%, -50%);
+              right: ( (140 / 1024) * 100vw );
             }
             @include media(){
               top: auto;
               transform: translateY(0);
               bottom: 40px;
               height: ((560 / 1024) * 100vh);
-              right: ( (20 / 375) *100vw );
+              right: ( (20 / 767) * 100vw );
             }
             @include media(sp){
               height: ((315 / 667) * 100vh);
+              right: ((20 / 375) * 100vw);
               bottom: 20px;
             }
           }
@@ -721,21 +723,21 @@ a{
             opacity: 0;
             transition: opacity .5s;
             position: absolute;
-            right:calc((160 / 1920) * 100vw);
+            right:calc((140 / 1920) * 100vw);
             bottom: 0;
             max-height: 942px;
             height: calc(100vh - 200px);
             @media (max-width:1280px){
-              right:calc((140 / 1920) * 100vw);
+              right:calc((120 / 1920) * 100vw);
             }
             @include media(lt){
               overflow: hidden;
-              right:calc((60 / 1024) * -100vw);
+              right:calc((20 / 1024) * -100vw);
               height: calc(100vh - 220px);
             }
             @include media(){
               height: ((640 / 1024) * 100vh);
-              right: ((20 / 375) * 100vw );
+              right: ((20 / 375) *  -100vw );
   
             }
             @include media(sp){
@@ -794,13 +796,16 @@ a{
       &.lp-mv__list--01{
         .lp-mv__listItem01{
           .lp-mv__listItemHandcream{
-            animation: rightInMv 2.7s cubic-bezier(0.2, 0.5, 0.7, 1) 1s forwards
+            animation: rightInMv 2.5s cubic-bezier(0.2, 0.5, 0.7, 1) 1s forwards;
           }
           .lp-mv__listItemSakura01{
-            animation: leftInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards
+            animation: leftInMv 2.7s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
           }
           .lp-mv__listItemSakura02{
-            animation: rightInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards
+            animation: rightInMv 2.7s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
+            @include media(){
+              animation: leftInMv 2.7s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
+            }
           }
         }
 
@@ -813,13 +818,16 @@ a{
       &.lp-mv__list--02{
         .lp-mv__listItem02{
         .lp-mv__listItemHand{
-          animation: fadeInMv 2.7s cubic-bezier(0.2, 0.5, 0.7, 1) 1s forwards
+          animation: fadeInMv 2.5s cubic-bezier(0.2, 0.5, 0.7, 1) 1s forwards;
         }
         .lp-mv__listItemSakura01{
-          animation: leftInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards
+          animation: leftInMv 2.7s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
         }
         .lp-mv__listItemSakura02{
-          animation: rightInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards
+          animation: rightInMv 2.7s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
+          @include media(){
+            animation: leftInMv 2.7s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
+          }
         }
       }
         +.lp-mv__pagination{
@@ -831,7 +839,7 @@ a{
       &.lp-mv__list--03{
         .lp-mv__listItem03{
 
-          animation: fadeInMv 3s cubic-bezier(0.3, 0.7, 0.89, 1) 1s forwards;
+          animation: fadeInMv 3s cubic-bezier(0.7, 0.75, 0.75, 0.75) 1s forwards;
         }
         +.lp-mv__pagination{
           .lp-mv__paginationBtn--03{
@@ -862,6 +870,7 @@ a{
     
   }
   &-winter{
+    opacity: 0;
     min-height: 100vh;
     background: url(img/winter.jpg)  center / cover no-repeat;
     color: $fontw;
@@ -871,6 +880,10 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &.is-animation{
+      animation: fadeIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+    }
+    
     @include media(){
       @include tbPad();
     }
@@ -949,6 +962,7 @@ a{
     }
     &__inner{
       &Head{
+        opacity: 0;
         font-size: $xl;
         text-align: center;
         padding: 40px 50px;
@@ -959,6 +973,9 @@ a{
         z-index:1;
         background: radial-gradient(#fff 66%, rgba(255,255,255,0.5) 70%,rgba(255,255,255,0)  76%);
         margin-bottom: 40px;
+        &.is-animation{
+          animation: fadeIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }    
         @include media(){
           font-size: $lm;
           padding: 30px;
@@ -974,12 +991,23 @@ a{
       }
       &Img{
         &--hand{
+          opacity: 0;
           display: block;
           margin: 0 auto;
           max-width: 750px;
           width: 75vw;
+          &.is-animation{
+            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            animation-delay: 1.0s;
+          }
+      
         }
         &--sakura01{
+          &.is-animation{
+            animation: leftIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            animation-delay: 0.7s;
+          }
+          opacity: 0;
           max-width: 420px;
           width: calc((420 / 1920)* 100vw);
           position: absolute;
@@ -999,6 +1027,11 @@ a{
           }
         }
         &--sakura02{
+          &.is-animation{
+            animation: rightIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            animation-delay: 0.7s;
+          }
+          opacity: 0;
           max-width:400px;
           width: calc((400/ 1920)* 100vw);
           position: absolute;
@@ -1048,6 +1081,10 @@ a{
         &Box{
           max-width: 560px;
           width: 62.5%;
+          opacity: 0;
+          &.is-animation{
+            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+          }
           @include media(lt){
             width: 100%;
           }
@@ -1087,6 +1124,10 @@ a{
       &Img{
         background: url(img/lp-catch__innerImg.jpg) no-repeat center / cover;
         width: 50%;
+        opacity: 0;
+        &.is-animation{
+          animation: fadeIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }
         @include media(lt){
           display: none;
         }
@@ -1118,6 +1159,10 @@ a{
         align-items: center;
         width: 50%;
         min-height: 100vh;
+        opacity: 0;
+        &.is-animation{
+          animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }
         @include media(lt){
           min-height: auto;
           width: 100%;
@@ -1175,6 +1220,10 @@ a{
         &Img{
           display: block;
           height: calc((780 / 1080) * 100vh);
+          opacity: 0;
+          &.is-animation{
+            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+          }
           @include media(lt){
             height: calc((272 / 667) * 100vh);
             margin-bottom: 40px;
@@ -1197,6 +1246,10 @@ a{
       &Head{
         text-align: center;
         margin-bottom: 80px;
+        opacity: 0;
+        &.is-animation{
+          animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }  
         @include media(){
           max-width: 520px;
           margin: 0 auto 40px;
@@ -1251,9 +1304,16 @@ a{
             
           }
           &01{
-
+            opacity: 0;
+            &.is-animation{
+              animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            }  
           } 
           &02{
+            opacity: 0;
+            &.is-animation{
+              animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            }  
             margin-top: calc((460 / 1080)* 100vh);
             @include media(){
               margin-top: 80px;
@@ -1263,6 +1323,10 @@ a{
             }
           } 
           &03{
+            opacity: 0;
+            &.is-animation{
+              animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            }  
             margin-top: -200px;
             @include media(){
               margin-top: 80px;
@@ -1284,6 +1348,11 @@ a{
             width: calc((472 / 1920) * 100vw); 
             top: 150px;
             right: 0;
+            opacity: 0;
+            &.is-animation{
+              animation: rightIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+              animation-delay: 0.7s;
+            }
             @include media(lt){
               width: calc((300 / 1024) * 100vw); 
             }
@@ -1294,6 +1363,11 @@ a{
             top: 53%;
             transform:translateY(-50%);
             left: 0;
+            opacity: 0;
+            &.is-animation{
+              animation: leftIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+              animation-delay: 0.7s;
+            }
             @include media(lt){
               top: 50%;
               width: calc((250 / 1024) * 100vw); 
@@ -1304,6 +1378,11 @@ a{
             width: calc((578 / 1920) * 100vw); 
             bottom: 0;
             right: 0;
+            opacity: 0;
+            &.is-animation{
+              animation: rightIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+              animation-delay: 0.7s;
+            }
             @include media(lt){
               width: calc((360 / 1024) * 100vw); 
             }
@@ -1332,6 +1411,10 @@ a{
       &Head{
         text-align: center;
         margin-bottom: 80px;
+        opacity: 0;
+        &.is-animation{
+          animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }
         @include media (){
           margin-bottom: 40px;
         }
@@ -1359,6 +1442,10 @@ a{
         &Box{
           max-width: 600px;
           width: calc((720 / 1920) * 100vw);
+          opacity: 0;
+          &.is-animation{
+            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+          }
           @include media (lt){
             width: calc(50% - 20px);
           }
@@ -1426,6 +1513,10 @@ a{
     }
     &__inner{
       &Head{
+        opacity: 0;
+        &.is-animation{
+          animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }
         &Img{
           display: block;
           margin: 0 auto 80px;
@@ -1442,6 +1533,7 @@ a{
         margin: 0 auto;
         position: relative;
         height: calc((700 / 1080) * 100vh);
+
         @include media(){
           flex-direction: column;
           height: auto;
@@ -1453,7 +1545,10 @@ a{
           display: flex;
           flex-direction: column;
           justify-content: center;
-          
+          opacity: 0;
+          &.is-animation{
+            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+          }
           @include media(){
             margin-bottom: 64px;
             width: 100%;
@@ -1499,6 +1594,11 @@ a{
           flex-direction: column;
           justify-content: center;
           @include tbPad();
+          opacity: 0;
+          &.is-animation{
+            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+          }
+
           @include media(){
             margin-bottom: 40px;
             width: 100%;
@@ -1592,7 +1692,6 @@ a{
 	}
   25%{
     opacity: 1;
-    z-index: 1;
     transform: translateX(0);
 	}
   50%{
@@ -1609,7 +1708,6 @@ a{
 	}
   90%{
     opacity: 0.5;
-
     transform: translateX(5%);
 	}
 	to{
@@ -1627,7 +1725,6 @@ a{
   }
   25%{
     opacity: 1;
-    z-index: 1;
     transform: translateX(0);
 	}
   50%{
@@ -1677,122 +1774,63 @@ a{
 	}
 }
 
-@keyframes fadeOut{
-	0%{
-    z-index: 1;
-    opacity: 1;
-    visibility: hidden;
-	}
-	to{
-    z-index: 1;
-    opacity: 0;
-	}
-}
+
 
 /*汎用*/
-/*@keyframes rightInOut{
+@keyframes rightIn{
 	0%{
     opacity: 0;
-    z-index: 1;
     transform: translateX(25%);
 	}
-  25%{
+  50%{
 		opacity: 1;
 	}
-  50%{
+	to{
     opacity: 1;
-    z-index: 1;
 		transform: translateX(0);
 	}
-	75%{
-		opacity: 1;
-	}
-	to{
-    opacity: 0;
-    z-index: 1;
-    transform: translateX(25%);
-	}
 }
-*/
-@keyframes leftInMv{
+@keyframes leftIn{
 	0%{
     opacity: 0;
-    z-index: 1;
     transform: translateX(-25%);
   }
-  25%{
-    opacity: 1;
-    z-index: 1;
-    transform: translateX(0);
-	}
   50%{
     opacity: 1;
-    transform: translateX(0);
-	}
- 70%{
-    opacity: 1;
-    transform: translateX(0);
-	}
-  80%{
-    opacity: 1;
-    transform: translateX(0);
-	}
-  90%{
-    opacity: 0.5;
-
-    transform: translateX(-5%);
 	}
 	to{
-    opacity: 0;
-    z-index: 1;
-    transform: translateX(-10%);
-	}
-}
-@keyframes rightOut{
-	0%{
     opacity: 1;
-    z-index: 1;
     transform: translateX(0);
 	}
-  25%{
-    opacity: 0.8;
-	}
+}
+@keyframes bottomIn{
+	0%{
+    opacity: 0;
+    transform: translateY(10%);
+  }
   50%{
-		opacity: 0.5;
+    opacity: 0.5;
 	}
-	80%{
+	to{
+    opacity: 1;
+    transform: translateX(0);
+	}
+}
 
+@keyframes fadeIn{
+	0%{
+    opacity: 0;
+	}
+  30%{
     opacity: 0.25;
 	}
+  50%{
+    opacity: 0.5;
+	}
+  75%{
+    opacity: 0.75;
+	}
 	to{
-
-    opacity: 0;
-    z-index: 0;
-    transform: translateX(25%);
+    opacity: 1;
 	}
 }
-/*@keyframes leftInOut{
-	0%{
-    opacity: 0;
-    z-index: 1;
-    transform: translateX(-25%);
-  }
-  10%{
-    opacity: 1;
-    transform: translateX(0);
-	}
-  50%{
-    opacity: 1;
-    z-index: 1;
-		transform: translateX(0);
-	}
-	90%{
-    opacity: 1;
-    transform: translateX(0);
-	}
-	to{
-    opacity: 0;
-    z-index: 0;
-    transform: translateX(-25%);
-	}
-}*/

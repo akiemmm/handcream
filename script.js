@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			tpMvList.classList.add("lp-mv__list--0" + n);
       };
     // s、u関数
-    let set, slideCount  = function() {
+    let set, slideCount = function() {
         //3がnだった場合、nは1になり、
 				//そうでない場合はn++されslide関数が実行される
 				if(3===n){
@@ -63,12 +63,12 @@ window.addEventListener('DOMContentLoaded', () => {
     //700msでsetInterbvalをセット
     //slideLoopは与えられたあらかじめセットした第一関数。
     //とりあえず関数与えないと動かない
-    set = setInterval(slideCount, 5000);
+    set = setInterval(slideCount, 4000);
     //ここまででボタン以外は動く
 
     //ここからはボタンを動かす
     //forEach関数
-    let e = document.querySelectorAll(".lp-Mv__paginationBtn");
+    let e = document.querySelectorAll(".lp-mv__paginationBtn");
     //eは配列、indexはインデックス
     e.forEach((e, index)=> {
         //対応している配列のボタンをクリック
@@ -78,11 +78,47 @@ window.addEventListener('DOMContentLoaded', () => {
             //一度変数setをリセット
             clearInterval(set),
             //セットインターバルは行うが…
-            set = setInterval(slideCount, 5000),
+            set = setInterval(slideCount, 4000),
             //ここで大事なのはindexを＋1すること。（0すたーとなので このままだと前の番号が表示されてしまう。）
             n = index + 1;
             //最後にnをindex＋1したスライド関数をするとOK！
             slide();
-        })
     })
-	})
+  })
+})
+//スクロールアニメーション
+
+//IntersectionObserver
+//仮にoptionを設定
+const option = {
+  threshold: [0.05]
+};
+//is-active
+//コールバックを設定
+//関数「callback」の第一引数にはIntersectionObserverEntryオブジェクトが入る
+function callback(entries) {
+  //第一引数entries連想配列＝「IntersectionObserverEntryオブジェクト」をforEachでループする。この場合entryを引数にした無名関数をループする。
+    entries.forEach(function(entry){
+      //entryの引数部分がコンソールに呼び出される
+      console.log({entry});
+    //isIntersectioningプロパティは交差しているかどうかのbool値（true、false）
+    //webAPI固有のプロパティ
+    //viewport 入ったときにisIntersecting===true 出たときにfalse
+    if(entry.isIntersecting){
+      entry.target.classList.add('is-animation');
+    }
+  });
+};
+  //まずIntersection observerインスタンス作成
+  //ターゲットがIntersectionObserverに指定された閾値を満たすたびに
+  //callback関数が呼び出される。
+  //第一引数のcallback関数と、第二引数のoptionを設定
+  const io = new IntersectionObserver(callback, option);
+  //ここでは監視したい複数要素をターゲットにする
+  const jsAnimation = document.querySelectorAll('.js-animation');
+  console.log({jsAnimation});
+  //targets（.targetBox)の数のたび、io=「IntersectionObserverインスタンス」監視対象にする。
+  jsAnimation.forEach(function(target){
+    //IntersectionObserverインスタンスをobserve（監視する）
+    io.observe(target);
+});
