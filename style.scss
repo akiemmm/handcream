@@ -1159,16 +1159,18 @@ a{
         align-items: center;
         width: 50%;
         min-height: 100vh;
-        opacity: 0;
-        &.is-animation{
-          animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
-        }
+        
+
         @include media(lt){
           min-height: auto;
           width: 100%;
         }
         &Box{
           width: 520px;
+          opacity: 0; 
+          &.is-animation{
+            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+          }
           @include media(lt){
             width:80%;
           }
@@ -1545,10 +1547,7 @@ a{
           display: flex;
           flex-direction: column;
           justify-content: center;
-          opacity: 0;
-          &.is-animation{
-            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
-          }
+
           @include media(){
             margin-bottom: 64px;
             width: 100%;
@@ -1563,6 +1562,8 @@ a{
             left: 50%;
             height: calc((700 / 1080) * 100vh);
             top: 0;
+            
+            
             @include media(){
               position: static;
               width: 100%;
@@ -1570,9 +1571,14 @@ a{
               margin-top: 64px;
             }
           }
+
           &Text{
             font-size: $l;
             margin-bottom: 80px;
+            opacity: 0;
+            &.is-animation{
+              animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            }
             @include media(){
               font-size: $lm;
               margin-bottom: 40px;
@@ -1584,20 +1590,26 @@ a{
           .sw-btn.store.pc{
             margin: 0 auto;
             font-family: $yugothic;
+            opacity: 0;
+            &.is-animation{
+              animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            }
           }
 
         }
+        .lp-shop__innerFlexStore::after{
+          opacity: 0;
 
+        }
+        .lp-shop__innerFlexStore.is-animation::after{
+          animation: bottomIn 1s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }
         &Online{
           width:50%;
           display: flex;
           flex-direction: column;
           justify-content: center;
           @include tbPad();
-          opacity: 0;
-          &.is-animation{
-            animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
-          }
 
           @include media(){
             margin-bottom: 40px;
@@ -1606,6 +1618,10 @@ a{
           &Text{
            font-size: $xl;
             margin-bottom: 80px;
+            opacity: 0;
+            &.is-animation{
+              animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            }
             @include media(){
               font-size: $l;
               margin-bottom: 40px;
@@ -1617,6 +1633,10 @@ a{
           .sw-btn.buy.pc{
             margin: 0 auto;
             font-family: $yugothic;
+            opacity: 0;
+            &.is-animation{
+              animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+            }
           }
         }
       }
@@ -1629,6 +1649,10 @@ a{
         width: ((313 / 1920) * 100vw);
         left: 20px;
         top: 100px;
+        opacity: 0;
+        &.is-animation{
+          animation: leftIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }
         @include media(){
           top: 80px;
           left: 40px;
@@ -1644,6 +1668,10 @@ a{
         width: ((260 / 1920) * 100vw);
         right: 20px;
         bottom: 20px;
+        opacity: 0;
+        &.is-animation{
+          animation: rightIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
+        }
         @include media(){
           width: ((180 / 767) * 100vw);
           right: 40px;

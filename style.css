@@ -1404,11 +1404,6 @@ a:hover, a:focus {
   align-items: center;
   width: 50%;
   min-height: 100vh;
-  opacity: 0;
-}
-
-.lp-sales__innerText.is-animation {
-  animation: bottomIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 @media screen and (max-width: 1024px) {
@@ -1420,6 +1415,11 @@ a:hover, a:focus {
 
 .lp-sales__innerTextBox {
   width: 520px;
+  opacity: 0;
+}
+
+.lp-sales__innerTextBox.is-animation {
+  animation: bottomIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 @media screen and (max-width: 1024px) {
@@ -1956,11 +1956,6 @@ a:hover, a:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  opacity: 0;
-}
-
-.lp-shop__innerFlexStore.is-animation {
-  animation: bottomIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 @media screen and (max-width: 768px) {
@@ -1994,6 +1989,11 @@ a:hover, a:focus {
 .lp-shop__innerFlexStoreText {
   font-size: 28px;
   margin-bottom: 80px;
+  opacity: 0;
+}
+
+.lp-shop__innerFlexStoreText.is-animation {
+  animation: bottomIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 @media screen and (max-width: 768px) {
@@ -2012,6 +2012,19 @@ a:hover, a:focus {
 .lp-shop__innerFlexStore .sw-btn.store.pc {
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+  opacity: 0;
+}
+
+.lp-shop__innerFlexStore .sw-btn.store.pc.is-animation {
+  animation: bottomIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
+}
+
+.lp-shop__innerFlex .lp-shop__innerFlexStore::after {
+  opacity: 0;
+}
+
+.lp-shop__innerFlex .lp-shop__innerFlexStore.is-animation::after {
+  animation: bottomIn 1s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 .lp-shop__innerFlexOnline {
@@ -2022,11 +2035,6 @@ a:hover, a:focus {
   padding-left: 40px;
   padding-right: 40px;
   box-sizing: border-box;
-  opacity: 0;
-}
-
-.lp-shop__innerFlexOnline.is-animation {
-  animation: bottomIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 @media screen and (max-width: 768px) {
@@ -2039,6 +2047,11 @@ a:hover, a:focus {
 .lp-shop__innerFlexOnlineText {
   font-size: 40px;
   margin-bottom: 80px;
+  opacity: 0;
+}
+
+.lp-shop__innerFlexOnlineText.is-animation {
+  animation: bottomIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 @media screen and (max-width: 768px) {
@@ -2057,6 +2070,11 @@ a:hover, a:focus {
 .lp-shop__innerFlexOnline .sw-btn.buy.pc {
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic", Verdana, Meiryo, sans-serif;
+  opacity: 0;
+}
+
+.lp-shop__innerFlexOnline .sw-btn.buy.pc.is-animation {
+  animation: bottomIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 .lp-shop__Sakura {
@@ -2068,6 +2086,11 @@ a:hover, a:focus {
   width: 16.30208vw;
   left: 20px;
   top: 100px;
+  opacity: 0;
+}
+
+.lp-shop__Sakura01.is-animation {
+  animation: leftIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 @media screen and (max-width: 768px) {
@@ -2090,6 +2113,11 @@ a:hover, a:focus {
   width: 13.54167vw;
   right: 20px;
   bottom: 20px;
+  opacity: 0;
+}
+
+.lp-shop__Sakura02.is-animation {
+  animation: rightIn 0.5s cubic-bezier(0.25, 0.5, 0.75, 1) 0.5s forwards;
 }
 
 @media screen and (max-width: 768px) {
