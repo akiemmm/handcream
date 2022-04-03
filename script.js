@@ -18,14 +18,26 @@ window.addEventListener('DOMContentLoaded', () => {
 		pageTop.classList.remove('is-active');
 	}
 });
-//押すとスムーススクロール
-pageTop.addEventListener('click', (e) => {
-	e.preventDefault();
+const smoothScroll = () =>{
 	window.scrollTo({
 		top: 0,
 		behavior: 'smooth',
 	});
+}
+//押すとスムーススクロール
+pageTop.addEventListener('click', (e) => {
+	e.preventDefault();
+  smoothScroll();
 });
+//ロゴボタン押したときも同様
+const logo = document.querySelectorAll('h1 a');
+for(let i = 0 ; i <logo.length;  i++)
+logo[i].addEventListener('click', (e) => {
+	e.preventDefault();
+  smoothScroll();
+});
+
+
 
 //ハンバーガー
 const spMenu = document.querySelector('.st-headerSpMenu');
@@ -34,11 +46,19 @@ document.getElementById('hamburgerBtn').addEventListener('click', () => {
   spMenu.classList.add('is-open');
   spMenu.classList.remove('is-close');
 	} );
-	document.getElementById('closeBtn').addEventListener('click', () => {
-    spMenu.classList.remove('is-open');
-    spMenu.classList.add('is-close');
-	} );
+const close = () => {
+  spMenu.classList.remove('is-open');
+  spMenu.classList.add('is-close');
+}
 
+	document.getElementById('closeBtn').addEventListener('click', () => {
+    close();
+	} );
+  let spMenuLink = document.getElementsByClassName('st-headerSpMenuNavListItemLink');
+  for(let i = 0 ; i < spMenuLink.length;  i++)
+  spMenuLink[i].addEventListener('click', () => {
+    close();
+    } );
 //MVスライド
 window.addEventListener('DOMContentLoaded', () => {
 	let tpMvList = document.querySelector('.lp-mv__list');
@@ -99,8 +119,6 @@ const option = {
 function callback(entries) {
   //第一引数entries連想配列＝「IntersectionObserverEntryオブジェクト」をforEachでループする。この場合entryを引数にした無名関数をループする。
     entries.forEach(function(entry){
-      //entryの引数部分がコンソールに呼び出される
-      console.log({entry});
     //isIntersectioningプロパティは交差しているかどうかのbool値（true、false）
     //webAPI固有のプロパティ
     //viewport 入ったときにisIntersecting===true 出たときにfalse
@@ -116,7 +134,6 @@ function callback(entries) {
   const io = new IntersectionObserver(callback, option);
   //ここでは監視したい複数要素をターゲットにする
   const jsAnimation = document.querySelectorAll('.js-animation');
-  console.log({jsAnimation});
   //targets（.targetBox)の数のたび、io=「IntersectionObserverインスタンス」監視対象にする。
   jsAnimation.forEach(function(target){
     //IntersectionObserverインスタンスをobserve（監視する）
