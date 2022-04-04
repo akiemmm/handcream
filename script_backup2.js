@@ -39,32 +39,28 @@ logo[i].addEventListener('click', (e) => {
   smoothScrolllTop();
 })};
 
-
-//初期ウィンドウサイズが1024px超えなら120px、
-  //そうでなければ64px
-//参照https://zenn.dev/yuki0410/articles/878f4afbff6668d4e28a-2
-const ltSize = window.matchMedia("(max-width:1024px)");
-
-//ノートパソコン（ラップトップ）リスナー関数
-    const listenerLt = (e) => {
-      // リサイズ時に行う処理
-      if (e.matches) {
-        gap = 64;
-      } else {
-        gap = 120 ;
-      }
-};
-// リスナー登録
-ltSize.addEventListener("change", listenerLt);
-// 初期化処理
-listenerLt(ltSize);
-    
-
-
- //アンカーリンクを選択した際、スムーススクロールしてほしい
+//アンカーリンクを選択した際、スムーススクロールしてほしい
 //アンカーリンクであれば、動くことが可能
-//参照：https://flex-box.net/js-smoothscroll/#co-index-6   
-const smoothScroll = () =>{
+//参照：https://flex-box.net/js-smoothscroll/#co-index-6
+/*const smoothScrollAnker = document.querySelectorAll('a[href^="#"]');
+  for (let i = 0; i < smoothScrollAnker.length; i++){
+    smoothScrollAnker[i].addEventListener('click', (e) => {
+      e.preventDefault();
+      let href = smoothScrollAnker[i].getAttribute('href');
+      let targetElement = document.getElementById(href.replace('#', ''));
+      const rect = targetElement.getBoundingClientRect().top;
+      const offset = window.pageYOffset;
+      const gap = 120;
+      const target = rect + offset - gap;
+      window.scrollTo({
+        top: target,
+        behavior: 'smooth',
+      });
+    });
+	}
+	*/
+
+const smoothScroll = (gap) =>{
 	const smoothScrollAnker = document.querySelectorAll('a[href^="#"]');
 	for (let i = 0; i < smoothScrollAnker.length; i++){
     smoothScrollAnker[i].addEventListener('click', (e) => {
@@ -81,21 +77,18 @@ const smoothScroll = () =>{
     });
 	}
 }
-smoothScroll();
-
+smoothScroll(120);
 
 //ハンバーガー
 //開く時
 //ハンバーガーが開いている場合、bodyが動かないように設定
-//参照https://tech.arms-soft.co.jp/entry/2021/10/06/090000
-
 const html = document.querySelector('html')
 const spMenu = document.querySelector('.st-headerSpMenu');
 const headerHeight = 64 //ヘッダーの高さ
 const hambergerBtn = document.getElementById('hamburgerBtn');
 
 let bodyHeight //ウィンドウの高さを入れる場所
-let scrollpos //スクロールの位置を入れる場所
+let scrollpos　//スクロールの位置を入れる場所
 
 // ハンバーガーメニューの開閉
 hambergerBtn.addEventListener('click', () => {
@@ -130,7 +123,7 @@ document.getElementById('closeBtn').addEventListener('click', () => {
 let spMenuLink = document.querySelectorAll('.st-headerSpMenuNav a');
 for(let i = 0 ; i < spMenuLink.length;  i++)
 spMenuLink[i].addEventListener('click', () => {
-	smoothScroll();
+	smoothScroll(64);
 	close();
 });
 

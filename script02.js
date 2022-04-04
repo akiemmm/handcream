@@ -39,100 +39,76 @@ logo[i].addEventListener('click', (e) => {
   smoothScrolllTop();
 })};
 
-
-//初期ウィンドウサイズが1024px超えなら120px、
-  //そうでなければ64px
-//参照https://zenn.dev/yuki0410/articles/878f4afbff6668d4e28a-2
-const ltSize = window.matchMedia("(max-width:1024px)");
-
-//ノートパソコン（ラップトップ）リスナー関数
-    const listenerLt = (e) => {
-      // リサイズ時に行う処理
-      if (e.matches) {
-        gap = 64;
-      } else {
-        gap = 120 ;
-      }
-};
-// リスナー登録
-ltSize.addEventListener("change", listenerLt);
-// 初期化処理
-listenerLt(ltSize);
-    
-
-
- //アンカーリンクを選択した際、スムーススクロールしてほしい
+//アンカーリンクを選択した際、スムーススクロールしてほしい
 //アンカーリンクであれば、動くことが可能
-//参照：https://flex-box.net/js-smoothscroll/#co-index-6   
-const smoothScroll = () =>{
-	const smoothScrollAnker = document.querySelectorAll('a[href^="#"]');
-	for (let i = 0; i < smoothScrollAnker.length; i++){
+//参照：https://flex-box.net/js-smoothscroll/#co-index-6
+const smoothScrollAnker = document.querySelectorAll('a[href^="#"]');
+  for (let i = 0; i < smoothScrollAnker.length; i++){
     smoothScrollAnker[i].addEventListener('click', (e) => {
       e.preventDefault();
       let href = smoothScrollAnker[i].getAttribute('href');
       let targetElement = document.getElementById(href.replace('#', ''));
       const rect = targetElement.getBoundingClientRect().top;
       const offset = window.pageYOffset;
-      const target = rect + offset - gap;
+      const target = rect + offset;
       window.scrollTo({
         top: target,
         behavior: 'smooth',
       });
     });
-	}
-}
-smoothScroll();
-
+  }
 
 //ハンバーガー
 //開く時
-//ハンバーガーが開いている場合、bodyが動かないように設定
-//参照https://tech.arms-soft.co.jp/entry/2021/10/06/090000
-
+//ハンバーガーが開いている時、bodyが動かないように設定
 const html = document.querySelector('html')
 const spMenu = document.querySelector('.st-headerSpMenu');
 const headerHeight = 64 //ヘッダーの高さ
 const hambergerBtn = document.getElementById('hamburgerBtn');
 
 let bodyHeight //ウィンドウの高さを入れる場所
-let scrollpos //スクロールの位置を入れる場所
+let scrollpos　//スクロールの位置を入れる場所
 
 // ハンバーガーメニューの開閉
 hambergerBtn.addEventListener('click', () => {
+  // 開く処理
   spMenu.classList.add('is-open');
   spMenu.classList.remove('is-close');
-    // 現在のスクロール位置を取得する
-    scrollpos = window.pageYOffset
-    // メニューが開いたことを示すクラスをhtmlに付与する
-    html.classList.add('is-menuOpen')
-    // bodyのtopにスクロール位置を付与する
-    document.body.style.top = scrollpos * -1 + 'px'
-    // ウィンドウの高さを取得
-    bodyHeight = window.innerHeight
-    // 取得した高さを、メニューに付与する（ヘッダーの高さを引いた数）
-    spMenu.style.height = bodyHeight - headerHeight + 'px'
-});
-
+  // 現在のスクロール位置を取得する
+  scrollpos = window.pageYOffset
+  // メニューが開いたことを示すクラスをhtmlに付与する
+  html.classList.add('is-menuOpen')
+  // bodyのtopにスクロール位置を付与する（これがないとちらつく）
+  document.body.style.top = scrollpos * -1 + 'px'
+  // ウィンドウの高さを取得
+  bodyHeight = window.innerHeight
+  // 取得した高さを、メニューに付与する（ヘッダーの高さを引いた数）
+  spMenu.style.height = bodyHeight - headerHeight + 'px'
+})
 //×ボタン以外も、リンクを選択した際も閉じるため、close関数でまとめておく。
 const close = () => {
   spMenu.classList.remove('is-open');
   spMenu.classList.add('is-close');
-  // メニューが開いたことを示すクラスをはずす
-  html.classList.remove('is-menuOpen')
-  // スクロール位置を開いた時の位置へ戻す
-  window.scrollTo(0, scrollpos)
 }
 
 document.getElementById('closeBtn').addEventListener('click', () => {
-	close();
-});
+  close();
+    // メニューが開いたことを示すクラスをはずす
+    html.classList.remove('is-menuOpen')
+    // スクロール位置を開いた時の位置へ戻す
+    window.scrollTo(0, scrollpos)
+} );
+
+
+
 
 let spMenuLink = document.querySelectorAll('.st-headerSpMenuNav a');
 for(let i = 0 ; i < spMenuLink.length;  i++)
 spMenuLink[i].addEventListener('click', () => {
-	smoothScroll();
-	close();
-});
+  close();
+  } );
+
+
 
 //MVスライド
 window.addEventListener('DOMContentLoaded', () => {
