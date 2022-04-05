@@ -98,6 +98,7 @@ let bodyHeight //ウィンドウの高さを入れる場所
 let scrollpos //スクロールの位置を入れる場所
 
 // ハンバーガーメニューの開閉
+//開いた場合
 hambergerBtn.addEventListener('click', () => {
   spMenu.classList.add('is-open');
   spMenu.classList.remove('is-close');
@@ -111,6 +112,7 @@ hambergerBtn.addEventListener('click', () => {
     bodyHeight = window.innerHeight
     // 取得した高さを、メニューに付与する（ヘッダーの高さを引いた数）
     spMenu.style.height = bodyHeight - headerHeight + 'px'
+    smoothScroll();
 });
 
 //×ボタン以外も、リンクを選択した際も閉じるため、close関数でまとめておく。
@@ -123,17 +125,20 @@ const close = () => {
   window.scrollTo(0, scrollpos)
 }
 
+document.querySelector('.st-headerSpMenuNav .sw-btn.buy').addEventListener('click', () => {
+	close();
+});
+
 document.getElementById('closeBtn').addEventListener('click', () => {
 	close();
 });
 
 let spMenuLink = document.querySelectorAll('.st-headerSpMenuNav a');
-for(let i = 0 ; i < spMenuLink.length;  i++)
-spMenuLink[i].addEventListener('click', () => {
-	smoothScroll();
-	close();
-});
-
+for(let i = 0 ; i < spMenuLink.length;  i++){
+  spMenuLink[i].addEventListener('click', () => {
+    smoothScroll();
+    close();
+})};
 //MVスライド
 window.addEventListener('DOMContentLoaded', () => {
 	let tpMvList = document.querySelector('.lp-mv__list');

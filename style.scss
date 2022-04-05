@@ -540,7 +540,6 @@ a{
       animation: hamburger-close .5s ease;
       opacity: 0;
       visibility: hidden;
-
     }
   }    
     &Nav{
@@ -956,7 +955,8 @@ a{
     text-align: center;
     padding: 80px 0;
     box-sizing: border-box;
-    position: relative; 
+    position: relative;
+    overflow-x: hidden;
     @include media(){
       @include tbPad();
       display: flex;
@@ -1229,6 +1229,7 @@ a{
           display: block;
           height: calc((780 / 1080) * 100vh);
           opacity: 0;
+          filter: drop-shadow(2px 2px 6px rgba(180, 180, 180, 0.7));
           &.is-animation{
             animation: bottomIn .5s cubic-bezier(0.25, 0.5, 0.75, 1) .5s forwards;
           }
@@ -1246,6 +1247,7 @@ a{
     padding: 80px 0;
     box-sizing: border-box;
     position: relative;
+    overflow-x: hidden;
     @include tbPad();
     @include media(sp){
       @include spPad();
@@ -1512,6 +1514,7 @@ a{
     position: relative;
     padding: 80px 0;
     box-sizing: border-box;
+    overflow-x: hidden;
     @include media(){
       padding: 80px;
       @include tbPad();
