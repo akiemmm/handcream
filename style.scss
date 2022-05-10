@@ -102,6 +102,7 @@ ul, ol{
 //a
 a{
     text-decoration: none;
+    cursor: pointer;
   &:hover, &:focus{
     text-decoration: underline;
   }

@@ -19,26 +19,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		pageTop.classList.remove('is-active');
 	}
 });
-//smoothScrollの関数
-const smoothScrollTop = () =>{
-	window.scrollTo({
-		top: 0,
-		behavior: 'smooth',
-	});
-}
-//押すとスムーススクロール
-pageTop.addEventListener('click', (e) => {
-	e.preventDefault();
-  smoothScrolllTop();
-});
-//ロゴボタン押したときも同様
-const logo = document.querySelectorAll('h1 a');
-for(let i = 0 ; i <logo.length;  i++){
-logo[i].addEventListener('click', (e) => {
-	e.preventDefault();
-  smoothScrolllTop();
-})};
-
 
 //初期ウィンドウサイズが1024px超えなら120px、
   //そうでなければ64px
